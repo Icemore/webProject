@@ -1,3 +1,7 @@
+<?php
+include_once('../include/auth.php');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
