@@ -17,20 +17,14 @@ if(isset($_SESSION['AUTH_OK'])){
 //Если это попытка логина проверяем пароль
 if(isset($_POST['login']) && isset($_POST['passwd'])){
     include_once('include/db.php');
+    include_once('models/User.php');
 
-    $login=trim($_POST['login']);
-    $passwd=trim($_POST['passwd']);
+    $ok=User::checkLoginPass($_POST['login'], $_POST['passwd']);
 
-    $login=strtolower($login);
-    $login=mysqli_real_escape_string($db, $login);
-    $passwd=md5(md5($passwd));
-
-    echo $login.' '.$passwd;
-
-    $res=$db->query('select * from Users where name="'.$login.'" and passwd="'.$passwd.'"');
-
-    if($res->num_rows==1){
+    if($ok){
         $_SESSION['AUTH_OK']=true;
+        $_SESSION['user_id']=$ok;
+
         header("Location: home.php");
     }
     else

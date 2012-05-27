@@ -11,6 +11,7 @@ include('include/auth.php');
 </head>
 <body>
 
+<?php echo "<h3>Hi ".$currentUser->full_name."</h3>"; ?>
 <p>Home, sweet home.</p>
 <a href=login.php?logout>Выйти</a>
 
