@@ -29,8 +29,8 @@ create table Blocks (
 	name varchar(15) not null,
 	type int not null,
 	subtype int,
-	bgcolor int,
-	txtcolor int,
+	bgcolor varchar(7),
+	txtcolor varchar(7),
 	FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
 
