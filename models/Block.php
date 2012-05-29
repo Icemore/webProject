@@ -30,6 +30,9 @@ class Block
     }
 
     static function checkData($name, $type, $subtype, $bgcolor, $txtcolor){
+        include_once('include/types.php');
+        global $types, $typesCnt;
+
         $checkErrors=array();
 
         if(strlen($name)<3 || strlen($name)>30)
@@ -37,11 +40,13 @@ class Block
 
         if(!is_numeric($type))
             $checkErrors[]='Тип не является числом!';
-        else if($type<0 || $type>2)
+        else if($type<0 || $type>=$typesCnt)
             $checkErrors[]='Неверный тип';
-
-        if(!is_numeric($subtype))
-            $checkErrors[]='Подтип не явлется числом!';
+        else if(isset($subtype))
+            if(!is_numeric($subtype))
+                $checkErrors[]='Подтип не явлется числом!';
+            else if($subtype<0 || $subtype>=count($types[$type]->subTypes))
+                $checkErrors[]='Неверный подтип';
 
         if(!Block::checkColor($bgcolor))
             $checkErrors[]='Неверный фоновый цвет';

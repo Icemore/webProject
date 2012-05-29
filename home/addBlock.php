@@ -1,5 +1,28 @@
 <?php
 include_once('include/auth.php');
+include_once('include/types.php');
+include_once('models/Block.php');
+
+if(isset($_POST['type'])){
+    $typeId=$_POST['type'];
+    if(!is_numeric($typeId) || $typeId<0 || $typeId>=$typesCnt)
+        die();
+
+    $currentType=$types[$typeId];
+}
+
+if($_POST['action']=='addBlock'){
+    $subType=$_POST['subtype'];
+    $name=trim($_POST['name']);
+    $bgcolor=$_POST['bgcolor'];
+    $txtcolor=$_POST['txtcolor'];
+
+    $regErrors=Block::addBlock($currentUser->user_id, $name, $currentType->id, $subType, $bgcolor, $txtcolor);
+
+    if(!$regErrors)
+        header('Location: /home/blocks.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -9,6 +32,59 @@ include_once('include/auth.php');
     <meta charset="UTF-8">
 </head>
 <body>
+
+    <?php
+        if(isset($regErrors)){
+            echo '<h3>При добавлении блока произошли ошибки:</h3> <ul>';
+
+            foreach($regErrors as $error)
+                echo '<li>'.$error.'</li>';
+
+            echo '</ul>';
+        }
+    ?>
+
+
+    <form method="post" action="">
+        <?php
+            foreach($types as $type)
+                echo '<p><input name="type" type="radio" value="'.$type->id.'" '.($type->id==$currentType->id ? 'checked' : '').'>'
+                        .$type->name
+                     .'</p>';
+        ?>
+
+        <input type="submit" value="Выбрать">
+        <input name="action" type="hidden" value="select_type">
+    </form>
+
+
+    <?php //Прошу прощения за это, но как сделать по-другому я не знаю
+        if(isset($currentType)){
+            echo '<form method="post" action="">';
+
+            if(isset($currentType->subTypes)){
+                echo '<select name="subtype" size="1">';
+
+                    foreach($currentType->subTypes as $subType)
+                        echo '<option value="'.$subType->id.'" '.($subType->id==0 ? "selected" : "").'>'
+                                .$subType->name
+                             .'</option>';
+
+                echo '</select>';
+            }
+
+            echo '<p>Имя блока <input type="text" name="name" value="'.$name.'"></p>';
+            echo '<p>Цвет фона <input type="text" name="bgcolor" value='.($bgcolor ? $bgcolor : "#ffffff").'></p>';
+            echo '<p>Цвет текста <input type="text" name="txtcolor" value='.($txtcolor ? $txtcolor : "#000000").'></p>';
+
+            echo '<input type="hidden" name="type" value="'.$currentType->id.'">';
+            echo '<input type="hidden" name="action" value="addBlock">';
+            echo '<input type="submit" value="Добавить">';
+
+            echo '</form>';
+        }
+    ?>
+
 
 </body>
 </html>
