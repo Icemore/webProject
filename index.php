@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if(isset($_SESSION['AUTH_OK']))
+        header('Location: /home.php');
+?>
+
+
 <html>
 <head>
     <title>Главная страница</title>

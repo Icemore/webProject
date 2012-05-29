@@ -7,3 +7,5 @@ if($db->connect_errno){
     error_log('Failed to connect to MySQL: ('.$db->connect_errno.') '.$db->connect_error);
     die();
 }
+
+mysqli_set_charset($db, "uft8");

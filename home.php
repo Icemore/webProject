@@ -13,7 +13,11 @@ include('include/auth.php');
 
 <?php echo "<h3>Hi ".$currentUser->full_name."</h3>"; ?>
 <p>Home, sweet home.</p>
-<a href=login.php?logout>Выйти</a>
+<p><a href=login.php?logout>Выйти</a></p>
+
+<a href="home/adv.php">Объявления</a>  <a href="home/blocks.php">Блоки</a>
+
+
 
 </body>
 </html>

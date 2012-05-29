@@ -27,11 +27,11 @@ class Adv
     static function getByUser($user_id, $first=0, $last=2000000000){
         global $db;
 
-        $query="select adv_id from Adv where user_id=".$user_id." limit ".$first.", ".$last;
+        $query="select adv_id from Adv where user_id=".$user_id." and active=1 limit ".$first.", ".$last;
 
         $res=$db->query($query);
 
-        if(!$db->errno)
+        if($db->errno)
             error_log('Failed to get Adv by User_id: ('.$db->errno.') '.$db->error);
 
         $adv=array();
@@ -43,6 +43,8 @@ class Adv
     }
 
     static function checkData($name, $type, $caption, $text, $url){
+        include_once('include/types.php');
+        global $types, $typesCnt;
         $checkErrors=array();
 
         if(strlen($name)<3 || strlen($name)>30)
@@ -50,11 +52,25 @@ class Adv
 
         if(!is_numeric($type))
             $checkErrors[]='Тип не является числом!';
+        else if($type<0 || $type>=$typesCnt)
+            $checkErrors[]='Неверный тип';
 
-        /* TODO: ограничения на caption и text
-         * длина caption и text зависит от типа!
-         */
 
+        if($types[$type]->hasCaption){
+            if($caption=="")
+                $checkErrors[]='Отсутствует заголовок';
+
+            if(strlen($caption) > $types[$type]->captionLength)
+                $checkErrors[]='Слишком длинный заголовок';
+        }
+
+        if($types[$type]->hasText){
+            if($text=="")
+                $checkErrors[]='Отсутствует текст';
+
+            if(strlen($text) > $types[$type]->textLength)
+                $checkErrors[]='Слишком длинный текст';
+        }
 
         if(!filter_var($url, FILTER_VALIDATE_URL))
             $checkErrors[]='Неверный url';
@@ -120,6 +136,23 @@ class Adv
         }
 
         return $regErrors;
+    }
+
+    function deleteAdv(){
+        global $db;
+
+        $query='update Adv set active=0 where adv_id='.$this->adv_id;
+
+        $res=$db->query($query);
+
+        $error=false;
+        if(!$res){
+            $error='Не удалось удалить объявление. Попробуйте позднее';
+
+            error_log('Failed to delete Adv: ('.$db->errno.') '.$db->error);
+        }
+
+        return $error;
     }
 
 }

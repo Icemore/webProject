@@ -13,12 +13,25 @@ $blocks=Block::getByUser($currentUser->user_id);
     <meta charset="UTF-8">
 </head>
 <body>
+    <h2>Рекламные блоки</h2>
+    <a href="/home/addBlock.php">Добавить</a>
+    <table border="1">
+        <?php
+            foreach($blocks as $block){
+                echo '<tr>';
+                echo "<td><a href=\"/home/viewBlock.php?block_id={$block->block_id}\">{$block->block_id}</a></td>";
+                echo "<td><a href=\"/home/viewBlock.php?block_id={$block->block_id}\">{$block->name}</a></td>";
 
-<?php
-    foreach($blocks as $block){
-        echo "<p>".$block->name."</p>";
-    }
-?>
+                echo "<td>";
+                echo "<a href=\"/home/editBlock.php?block_id={$block->block_id}\">Редактировать</a> ";
+                echo "<a href=\"/home/deleteBlock.php?block_id={$block->block_id}\">Удалить</a>";
+                echo "</td>";
+
+                echo "</tr>";
+            }
+     ?>
+
+    </table>
 
 </body>
 </html>

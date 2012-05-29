@@ -8,29 +8,30 @@ create table Users (
 
 create table Categories (
 	cat_id int not null auto_increment primary key,
-	name varchar(10) not null unique
+	name varchar(15) not null unique
 );
 
 create table Adv (
 	adv_id int not null auto_increment PRIMARY KEY,
 	user_id int not null,
-	name varchar(15) not null,
+	name varchar(30) not null,
 	type int not null,
 	caption varchar(30),
 	text varchar(200),
 	url varchar(50) not null,
-
+	active boolean not null default '1',
 	FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
 
 create table Blocks (
 	block_id int not null auto_increment PRIMARY KEY,
 	user_id int not null,
-	name varchar(15) not null,
+	name varchar(30) not null,
 	type int not null,
 	subtype int,
 	bgcolor varchar(7),
 	txtcolor varchar(7),
+	active boolean not null default '1',
 	FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
 

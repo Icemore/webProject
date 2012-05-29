@@ -38,15 +38,17 @@ class Block
         if(strlen($name)<3 || strlen($name)>30)
             $checkErrors[]='Неверная длина имени (от 3 до 30 символов)';
 
-        if(!is_numeric($type))
-            $checkErrors[]='Тип не является числом!';
-        else if($type<0 || $type>=$typesCnt)
-            $checkErrors[]='Неверный тип';
-        else if(isset($subtype))
-            if(!is_numeric($subtype))
-                $checkErrors[]='Подтип не явлется числом!';
-            else if($subtype<0 || $subtype>=count($types[$type]->subTypes))
-                $checkErrors[]='Неверный подтип';
+        if(!is_null($type)){
+            if(!is_numeric($type))
+                $checkErrors[]='Тип не является числом!';
+            else if($type<0 || $type>=$typesCnt)
+                $checkErrors[]='Неверный тип';
+            else if(isset($subtype))
+                if(!is_numeric($subtype))
+                    $checkErrors[]='Подтип не явлется числом!';
+                else if($subtype<0 || $subtype>=count($types[$type]->subTypes))
+                    $checkErrors[]='Неверный подтип';
+        }
 
         if(!Block::checkColor($bgcolor))
             $checkErrors[]='Неверный фоновый цвет';
@@ -60,7 +62,7 @@ class Block
     static function getByUser($user_id, $first=0, $last=2000000000){
         global $db;
 
-        $query="select block_id from Blocks where user_id=".$user_id." limit ".$first.", ".$last;
+        $query="select block_id from Blocks where user_id=".$user_id." and active=1 limit ".$first.", ".$last;
 
         $res=$db->query($query);
 
@@ -110,7 +112,7 @@ class Block
         $bgcolor=trim($bgcolor);
         $txtcolor=trim($txtcolor);
 
-        $regErrors=Block::checkData($name, 0, 0, $bgcolor, $txtcolor);
+        $regErrors=Block::checkData($name, null, null, $bgcolor, $txtcolor);
 
         if(!$regErrors){
             $name=mysqli_real_escape_string($db, $name);
@@ -129,6 +131,23 @@ class Block
         }
 
         return $regErrors;
+    }
+
+    function deleteBlock(){
+        global $db;
+
+        $query='update Blocks set active=0 where block_id='.$this->block_id;
+
+        $res=$db->query($query);
+
+        $error=false;
+        if(!$res){
+            $error="Не удалось удалить блок. Попробуйте позднее";
+
+            error_log('Failed to delete Block: ('.$db->errno.') '.$db->error);
+        }
+
+        return $error;
     }
 
 }

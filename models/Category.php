@@ -8,13 +8,18 @@ class Category
 {
 
     static function parse($str){
+        global $db;
+
         $arr=explode(';', $str);
 
+        $res=array();
         foreach($arr as &$elem){
             $elem=strtolower(trim($elem));
+            if($elem)
+                $res[]=mysqli_real_escape_string($db, $elem);
         }
 
-        return $arr;
+        return $res;
     }
 
     static function updateCategories($cats){
@@ -25,6 +30,9 @@ class Category
         foreach($cats as &$cat) $cat='("'.$cat.'")';
 
         $query=$query.implode(', ', $cats);
+
+        //error_log($query);
+
         $res=$db->query($query);
 
         if(!$res){
@@ -43,7 +51,12 @@ class Category
             $cat='name="'.$cat.'"';
 
         $query=$query.implode(' or ', $cats);
+
+        //error_log($query);
+
         $res=$db->query($query);
+
+        //error_log($res->num_rows);
 
         if(!$res)
             error_log('Failed to get Categories ID ('.$db->errno.') '.$db->error);
@@ -56,7 +69,7 @@ class Category
         return $catsId;
     }
 
-    static function addForBlock($block_id, $str){
+    static function updateForBlock($block_id, $str){
         global $db;
 
         $cats=Category::parse($str);
@@ -66,7 +79,11 @@ class Category
 
         $catsId=Category::getCatsId($cats);
 
-        $query='insert ignore into Block_Category (block_id, cat_id) values ';
+        //Удалить все старые
+        $db->query("delete from Block_Category where block_id=".$block_id);
+
+        //Добавить все новые
+        $query='insert into Block_Category (block_id, cat_id) values ';
 
         $rows=array();
         foreach($catsId as $catId)
@@ -84,17 +101,35 @@ class Category
         return true;
     }
 
-    static function addForAdv($adv_id, $str){
+    static function getForBlock($block_id){
+        global $db;
+
+        $query='select cat.name from Categories as cat, Block_Category as block_cat where block_cat.block_id='.$block_id.' and cat.cat_id=block_cat.cat_id';
+
+        $res=$db->query($query);
+
+        $cats=array();
+        while($row=$res->fetch_assoc())
+            $cats[]=$row['name'];
+
+        return implode('; ', $cats);
+    }
+
+    static function updateForAdv($adv_id, $str){
         global $db;
 
         $cats=Category::parse($str);
 
-        if(!$cats || !Category::updateCategories($cats))
+        if(!Category::updateCategories($cats))
             return false;
 
         $catsId=Category::getCatsId($cats);
 
-        $query='insert ignore into Adv_Category (adv_id, cat_id) values ';
+        //Удалить все старые
+        $db->query("delete from Adv_Category where adv_id=".$adv_id);
+
+        //Добавить все новые
+        $query='insert into Adv_Category (adv_id, cat_id) values ';
 
         $rows=array();
         foreach($catsId as $catId)

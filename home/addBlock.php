@@ -2,6 +2,8 @@
 include_once('include/auth.php');
 include_once('include/types.php');
 include_once('models/Block.php');
+include_once('models/Category.php');
+include_once('include/db.php');
 
 if(isset($_POST['type'])){
     $typeId=$_POST['type'];
@@ -16,11 +18,19 @@ if($_POST['action']=='addBlock'){
     $name=trim($_POST['name']);
     $bgcolor=$_POST['bgcolor'];
     $txtcolor=$_POST['txtcolor'];
+    $categories=$_POST['categories'];
 
     $regErrors=Block::addBlock($currentUser->user_id, $name, $currentType->id, $subType, $bgcolor, $txtcolor);
 
-    if(!$regErrors)
-        header('Location: /home/blocks.php');
+
+    if(!$regErrors){
+        $block_id=mysqli_insert_id($db);
+        if(!Category::updateForBlock($block_id, $categories))
+            $regErrors[]='Не удалось добавить категории. Рекламный блок создан.';
+
+        if(!$regErrors)
+            header('Location: /home/blocks.php');
+    }
 }
 
 ?>
@@ -76,6 +86,8 @@ if($_POST['action']=='addBlock'){
             echo '<p>Имя блока <input type="text" name="name" value="'.$name.'"></p>';
             echo '<p>Цвет фона <input type="text" name="bgcolor" value='.($bgcolor ? $bgcolor : "#ffffff").'></p>';
             echo '<p>Цвет текста <input type="text" name="txtcolor" value='.($txtcolor ? $txtcolor : "#000000").'></p>';
+
+            echo '<p>Категории (отделяйте точкой с запятой) <input type="text" name="categories" value="'.$categories.'"></p>';
 
             echo '<input type="hidden" name="type" value="'.$currentType->id.'">';
             echo '<input type="hidden" name="action" value="addBlock">';
