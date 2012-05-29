@@ -8,7 +8,7 @@ create table Users (
 
 create table Categories (
 	cat_id int not null auto_increment primary key,
-	name varchar(10) not null
+	name varchar(10) not null unique
 );
 
 create table Adv (
