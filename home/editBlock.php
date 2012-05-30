@@ -11,9 +11,11 @@ if(!isset($_GET['block_id'])){
 
 $block_id=$_GET['block_id'];
 
+if(!is_numeric($block_id)) die();
+
 $currentBlock=new Block($block_id);
 
-if($currentUser->user_id != $currentBlock->user_id){
+if(!isset($currentBlock->user_id) || $currentUser->user_id != $currentBlock->user_id){
     header('Location: /home.php');
     die();
 }
