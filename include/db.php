@@ -8,4 +8,5 @@ if($db->connect_errno){
     die();
 }
 
+$db->query("SET NAMES 'utf8'");
 mysqli_set_charset($db, "uft8");

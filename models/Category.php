@@ -31,8 +31,6 @@ class Category
 
         $query=$query.implode(', ', $cats);
 
-        //error_log($query);
-
         $res=$db->query($query);
 
         if(!$res){
@@ -52,11 +50,8 @@ class Category
 
         $query=$query.implode(' or ', $cats);
 
-        //error_log($query);
-
         $res=$db->query($query);
 
-        //error_log($res->num_rows);
 
         if(!$res)
             error_log('Failed to get Categories ID ('.$db->errno.') '.$db->error);
