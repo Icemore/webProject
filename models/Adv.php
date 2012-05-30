@@ -47,7 +47,7 @@ class Adv
         global $types, $typesCnt;
         $checkErrors=array();
 
-        if(strlen($name)<3 || strlen($name)>30)
+        if(mb_strlen($name, "utf8")<3 || mb_strlen($name, "utf8")>30)
             $checkErrors[]='Неверная длина имени (от 3 до 30 символов)';
 
         if(!is_numeric($type))
@@ -60,7 +60,7 @@ class Adv
             if($caption=="")
                 $checkErrors[]='Отсутствует заголовок';
 
-            if(strlen($caption) > $types[$type]->captionLength)
+            if(mb_strlen($caption, "utf8") > $types[$type]->captionLength)
                 $checkErrors[]='Слишком длинный заголовок';
         }
 
@@ -68,7 +68,7 @@ class Adv
             if($text=="")
                 $checkErrors[]='Отсутствует текст';
 
-            if(strlen($text) > $types[$type]->textLength)
+            if(mb_strlen($text, "utf8") > $types[$type]->textLength)
                 $checkErrors[]='Слишком длинный текст';
         }
 
@@ -116,7 +116,7 @@ class Adv
         $text=trim($text);
         $url=trim($url);
 
-        $regErrors=Adv::checkData($name, 0, $caption, $text, $url);
+        $regErrors=Adv::checkData($name, $this->type, $caption, $text, $url);
 
         if(!$regErrors){
             $name=mysqli_real_escape_string($db, $name);

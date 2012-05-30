@@ -53,7 +53,7 @@ class User{
 
         //------ Логин ------
         if($login!=""){
-            if(strlen($login)<3 || strlen($login)>30)
+            if(mb_strlen($login, "utf8")<3 || mb_strlen($login, "utf8")>30)
                 $checkErrors[]='Неверная длина логина (от 3 до 30 символов)';
 
             if(!preg_match('/^[a-zA-Z][0-9a-zA-Z_]*$/', $login))
@@ -72,7 +72,7 @@ class User{
 
         //------ Пароль -------
         if($passwd!=""){
-            if(strlen($passwd)<4)
+            if(mb_strlen($passwd, "utf8")<4)
                 $checkErrors[]='Слишком короткий пароль (от 4х символов)';
 
             if($passwd!=$ret_passwd)

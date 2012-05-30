@@ -21,7 +21,7 @@ class Block
 
         $res=$db->query("select * from Blocks where block_id=".$id);
 
-        $this->initFromDbRow($res->fetch_assoc());
+            $this->initFromDbRow($res->fetch_assoc());
     }
 
     static private function checkColor($color){
@@ -35,7 +35,7 @@ class Block
 
         $checkErrors=array();
 
-        if(strlen($name)<3 || strlen($name)>30)
+        if(mb_strlen($name, "utf8")<3 || mb_strlen($name, "utf8")>30)
             $checkErrors[]='Неверная длина имени (от 3 до 30 символов)';
 
         if(!is_null($type)){

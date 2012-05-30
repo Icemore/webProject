@@ -142,4 +142,18 @@ class Category
         return true;
     }
 
+    static function getForAdv($adv_id){
+        global $db;
+
+        $query='select cat.name from Categories as cat, Adv_Category as adv_cat where adv_cat.adv_id='.$adv_id.' and cat.cat_id=adv_cat.cat_id';
+
+        $res=$db->query($query);
+
+        $cats=array();
+        while($row=$res->fetch_assoc())
+            $cats[]=$row['name'];
+
+        return implode('; ', $cats);
+    }
+
 }
