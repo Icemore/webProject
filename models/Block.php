@@ -150,6 +150,36 @@ class Block
         return $error;
     }
 
+    function getStatistics(){
+        global $db;
+
+        $query = 'select sum(views) as views, sum(clicks) as clicks from Statistics where block_id='.$this->block_id;
+
+        $res=$db->query($query);
+
+        if(!$res){
+            error_log('Failed to get Block Stats: ('.$db->errno.') '.$db->error);
+            die();
+        }
+
+        $summary=$res->fetch_assoc();
+
+        $query = 'select adv.url as url, sum(stat.clicks) as clicks from Adv as adv, Statistics as stat where stat.block_id='.$this->block_id.' and adv.adv_id=stat.adv_id group by url order by clicks limit 0, 50';
+
+        $statByUrl=array();
+
+        $res=$db->query($query);
+        if(!$res){
+            error_log('Failed to get Block Stats by URL: ('.$db->errno.') '.$db->error);
+            die();
+        }
+
+        while($row=$res->fetch_assoc())
+            $statByUrl[]=$row;
+
+        return array('summary' => $summary, 'byUrl' => $statByUrl);
+    }
+
 }
 
 

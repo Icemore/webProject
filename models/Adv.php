@@ -155,4 +155,21 @@ class Adv
         return $error;
     }
 
+    function getStatistics(){
+        global $db;
+
+        $query = 'select sum(views) as views, sum(clicks) as clicks from Statistics where adv_id='.$this->adv_id;
+
+        $res=$db->query($query);
+
+        if(!$res){
+            error_log('Failed to get Adv Stats: ('.$db->errno.') '.$db->error);
+            die();
+        }
+
+        $summary=$res->fetch_assoc();
+
+        return array('summary' => $summary);
+    }
+
 }
