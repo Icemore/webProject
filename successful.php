@@ -9,7 +9,7 @@
 
 <h1>You have successfully sign up! <br /> Now you can log in.</h1>
 <div id="but">
-<a href=login.php><input type="submit" value="Log In"></a>
+<a href=login.php><input type="button" value="Log In"></a>
 </div>
 </body>
 </html>

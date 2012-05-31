@@ -31,7 +31,8 @@ else{
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Profile</title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
     <meta charset="UTF-8">
 </head>
 <body>
@@ -51,17 +52,19 @@ else{
 ?>
 
 
-<p>Name: <?php $currentUser->name ?></p>
+<h1>Username: <?php $currentUser->name ?></h1>
 
 <form method="post" action="">
+<div id="reg">
     <p>Full name <input type="text" name="full_name" value="<?php echo $full_name ?>"></p>
     <p>E-mail <input type="text" name="email" value="<?php echo $email ?>"></p>
-
     <p>Old password <input type="password" name="passwd" value="<?php echo $passwd ?>"></p>
     <p>New password <input type="password" name="new_passwd" value="<?php echo $new_passwd ?>"></p>
     <p>Repeat new password <input  type="password" name="ret_new_passwd" value="<?php echo $ret_new_passwd ?>"></p>
 
-    <input type="submit" name="save" value="save">
+    <p><input type="submit" name="save" value="save">
+	<a href="../home.php"><input type="button" value="return to the main page"></a></p>
+	</div>
 </form>
 
 </body>

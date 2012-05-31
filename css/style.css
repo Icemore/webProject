@@ -4,7 +4,7 @@ body {
 
 	h1 {
 	position:absolute;
-	top: 160px;
+	top: 150px;
 	left: 450px;
 	color: yellow;
 	font-size: 25px;
@@ -14,7 +14,7 @@ body {
 	#but
 	{
 	position: absolute; 
-	top:230px; 
+	top:210px; 
 	left:600px;
 	}
 	
