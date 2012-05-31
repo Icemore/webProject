@@ -21,7 +21,9 @@ class Block
 
         $res=$db->query("select * from Blocks where block_id=".$id);
 
-            $this->initFromDbRow($res->fetch_assoc());
+        if(!$res) die();
+
+        $this->initFromDbRow($res->fetch_assoc());
     }
 
     static private function checkColor($color){
