@@ -1,5 +1,5 @@
 <?php
-include_once('include/auth.php');
+/*include_once('include/auth.php');
 global $currentUser;
 
 if(!isset($_POST['save'])){
@@ -24,7 +24,7 @@ else{
         $dataSaved=true;
     else
         $dataSaved=false;
-}
+}*/
 
 ?>
 
@@ -51,17 +51,17 @@ else{
 ?>
 
 
-<p>Имя: <?php $currentUser->name ?></p>
+<p>Name: <?php $currentUser->name ?></p>
 
 <form method="post" action="">
-    <p>Полное имя: <input type="text" name="full_name" value="<?php echo $full_name ?>"></p>
+    <p>Full name <input type="text" name="full_name" value="<?php echo $full_name ?>"></p>
     <p>E-mail <input type="text" name="email" value="<?php echo $email ?>"></p>
 
-    <p>Старый пароль <input type="password" name="passwd" value="<?php echo $passwd ?>"></p>
-    <p>Новый пароль <input type="password" name="new_passwd" value="<?php echo $new_passwd ?>"></p>
-    <p>Повторите новый пароль <input  type="password" name="ret_new_passwd" value="<?php echo $ret_new_passwd ?>"></p>
+    <p>Old password <input type="password" name="passwd" value="<?php echo $passwd ?>"></p>
+    <p>New password <input type="password" name="new_passwd" value="<?php echo $new_passwd ?>"></p>
+    <p>Repeat new password <input  type="password" name="ret_new_passwd" value="<?php echo $ret_new_passwd ?>"></p>
 
-    <input type="submit" name="save" value="Сохранить">
+    <input type="submit" name="save" value="save">
 </form>
 
 </body>
