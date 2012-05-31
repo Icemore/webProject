@@ -59,11 +59,14 @@ if($currentSubtype!="")
     <p>Всего просмотров: <?php echo $stat['summary']['views'] ?></p>
     <p>Всего переходов: <?php echo $stat['summary']['clicks'] ?></p>
 
-    <p>Переходы на сайты:</p>
     <?php
-        foreach($stat['byUrl'] as $row){
-            echo "<p>{$row['url']}: {$row['clicks']}</p>";
-        }
+    if($stat['byUrl']!=null){
+        echo "<p>Переходы на сайты:</p>";
+
+            foreach($stat['byUrl'] as $row){
+                echo "<p>{$row['url']}: {$row['clicks']}</p>";
+            }
+    }
     ?>
 
 </body>

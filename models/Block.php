@@ -153,7 +153,7 @@ class Block
     function getStatistics(){
         global $db;
 
-        $query = 'select sum(views) as views, sum(clicks) as clicks from Statistics where block_id='.$this->block_id;
+        $query = 'select COALESCE(sum(views), 0) as views, COALESCE(sum(clicks), 0) as clicks from Statistics where block_id='.$this->block_id;
 
         $res=$db->query($query);
 

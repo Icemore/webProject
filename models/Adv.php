@@ -158,7 +158,7 @@ class Adv
     function getStatistics(){
         global $db;
 
-        $query = 'select sum(views) as views, sum(clicks) as clicks from Statistics where adv_id='.$this->adv_id;
+        $query = 'select COALESCE(sum(views), 0) as views, COALESCE(sum(clicks), 0) as clicks from Statistics where adv_id='.$this->adv_id;
 
         $res=$db->query($query);
 
