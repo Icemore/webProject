@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>Post it!</title>
-	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
     <meta charset="UTF-8">
 </head>
 <body>

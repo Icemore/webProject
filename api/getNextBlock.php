@@ -26,7 +26,6 @@ $viewer=new Viewer($sess_id, $block);
 $advIds=Adv::getIdsByType($block->type);
 $advCnt=Adv::getCountByType($block->type);
 
-var_dump($advIds);
 
 $pathToBlock='../blocks/';
 
@@ -42,7 +41,6 @@ function getAdv($num){
     global $viewer, $advIds, $advCnt;
     $res=array();
 
-    //error_log("getAdv!!!");
 
     for($i=0; $i<$num; $i++){
         $res[]=new Adv($advIds[$viewer->getNextAdvIndex($advCnt)]);

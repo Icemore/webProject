@@ -38,7 +38,7 @@ if(isset($_POST['login']) && isset($_POST['passwd'])){
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Login</title>
-	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
     <meta charset="UTF-8">
 </head>
 <body>
