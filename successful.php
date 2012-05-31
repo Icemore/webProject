@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Successful!</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
     <meta charset="UTF-8">
 </head>
 <body>
 
-<h2>Вы успешно зарегистрировались!</h2>
-<p>Теперь вы можете войти в систему</p>
-<a href=login.php>Вход</a>
-
+<h1>You have successfully sign up! <br /> Now you can log in.</h1>
+<div id="but">
+<a href=login.php><input type="submit" value="Log In"></a>
+</div>
 </body>
 </html>

@@ -1,0 +1,39 @@
+body {
+	background-image: url("bg.jpg");
+	}
+
+	h1 {
+	position:absolute;
+	top: 130px;
+	left: 410px;
+	color: yellow;
+	font-size: 25px;
+	font-family: "Century Gothic";
+	}
+	
+	#but
+	{
+	position: absolute; 
+	top:230px; 
+	left:600px;
+	}
+	
+	#log
+	{
+	position:absolute;
+	top: 230px;
+	left: 600px;
+	color: yellow;
+	font-size: 18px;
+	font-family: "Century Gothic";
+	}
+	
+	#reg
+	{
+	position:absolute;
+	top: 200px;
+	left: 600px;
+	color: yellow;
+	font-size: 18px;
+	font-family: "Century Gothic";
+	}

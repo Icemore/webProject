@@ -37,7 +37,8 @@ if(isset($_POST['login']) && isset($_POST['passwd'])){
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
-    <title></title>
+    <title>Login</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
     <meta charset="UTF-8">
 </head>
 <body>
@@ -45,12 +46,14 @@ if(isset($_POST['login']) && isset($_POST['passwd'])){
 <?php if(isset($_GET['notify'])) echo '<p>Для того чтобы продолжить вы должны войти</p>'; ?>
 <?php if(isset($loginFailed)) echo '<p>Неверное имя пользователя или пароль</p>'; ?>
 
-<p>Вход в систему</p>
+<h1>Log In</h1>
 
 <form method='post' action='login.php'>
-    <p>Имя пользователя: <input type='text' name='login' size='15'></p>
-    <p>Пароль: <input type='password' name='passwd' size='15'></p>
-    <p> <input type='submit' value='Войти'> </p>
+    <div id="log">
+	<p>Username: <input type='text' name='login' size='15'></p>
+    <p>Password: <input type='password' name='passwd' size='15'></p>
+    <p> <input type='submit' value='login'> </p>
+	</div>
 </form>
 
 </body>
