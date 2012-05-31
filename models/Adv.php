@@ -20,7 +20,6 @@ class Adv
 
         $res=$db->query('select * from Adv where adv_id='.$id);
 
-        error_log("Failed to construct Adv ".$id);
         if(!$res) die();
 
         $this->initFromDbRow($res->fetch_assoc());
@@ -175,19 +174,16 @@ class Adv
         return array('summary' => $summary);
     }
 
-    static function getCountByType($type){
-        global $db;
-
-        $res=$db->query('select count(*) as cnt from Adv where active=1 and type='.$type);
-        $row=$res->fetch_assoc();
-
-        return $row['cnt'];
+    static function getCountForBlock(&$block){
+        $arr=Adv::getIdsForBlock($block);
+        if(!$arr) return 0;
+        else return count($arr);
     }
 
-    static function getIdsByType($type){
+    static function getIdsForBlock($block){
         global $db;
 
-        $res=$db->query('select adv_id from Adv where active=1 and type='.$type.' order by adv_id');
+        $res=$db->query('select distinct adv.adv_id from Adv as adv, Adv_Category as adv_cat, Block_Category as block_cat where adv.active=1 and adv.type='.$block->type.' and adv_cat.adv_id=adv.adv_id and adv_cat.cat_id=block_cat.cat_id and block_cat.block_id='.$block->block_id.' order by adv_id');
 
         if(!$res){
             //error_log('Failed to get AdvIds: ('.$db->errno.') '.$db->error);
@@ -199,6 +195,30 @@ class Adv
             $arr[]=$row['adv_id'];
 
         return $arr;
+    }
+
+    function incrimentViews($block_id){
+        global $db;
+
+        $query='insert into Statistics (adv_id, block_id, views) values ('.$this->adv_id.', '.$block_id.', 1) on duplicate key update views=views+1';
+
+        $res=$db->query($query);
+
+        if(!$res){
+            error_log('Failed to incriment Views for Adv: ('.$db->errno.') '.$db->error);
+        }
+    }
+
+    function incrimentClicks($block_id){
+        global $db;
+
+        $query='insert into Statistics (adv_id, block_id, clicks) values ('.$this->adv_id.', '.$block_id.', 1) on duplicate key update clicks=clicks+1';
+
+        $res=$db->query($query);
+
+        if(!$res){
+            error_log('Failed to incriment Clocks for Adv: ('.$db->errno.') '.$db->error);
+        }
     }
 
 }

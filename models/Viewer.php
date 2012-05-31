@@ -31,7 +31,7 @@ class Viewer
         $this->sess_id=$sess_id;
         $this->block_id=$block->block_id;
 
-        $advCnt= Adv::getCountByType($block->type);
+        $advCnt= Adv::getCountForBlock($block);
 
         $this->genNewArray($advCnt);
 

@@ -23,8 +23,8 @@ global $types;
 $block=new Block($block_id);
 $viewer=new Viewer($sess_id, $block);
 
-$advIds=Adv::getIdsByType($block->type);
-$advCnt=Adv::getCountByType($block->type);
+$advIds=Adv::getIdsForBlock($block);
+$advCnt=Adv::getCountForBlock($block);
 
 
 $pathToBlock='../blocks/';
@@ -38,12 +38,14 @@ $pathToBlock.='.php';
 echo eval(file_get_contents($pathToBlock));
 
 function getAdv($num){
-    global $viewer, $advIds, $advCnt;
+    global $viewer, $advIds, $advCnt, $block_id;
     $res=array();
 
 
     for($i=0; $i<$num; $i++){
-        $res[]=new Adv($advIds[$viewer->getNextAdvIndex($advCnt)]);
+        $adv=new Adv($advIds[$viewer->getNextAdvIndex($advCnt)]);
+        $adv->incrimentViews($block_id);
+        $res[]=$adv;
     }
 
     return $res;
