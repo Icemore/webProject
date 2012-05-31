@@ -151,10 +151,14 @@ class User{
         if($passwd!=""){
             if($this->passwd!=md5(md5($passwd)))
                 $regErrors[]="Неверный старый пароль";
+        }else{
+            if($new_passwd!="")
+                $regErrors[]="Введите старый пароль";
         }
 
         if(!isset($regErrors)){
-            $new_passwd=md5(md5($new_passwd));
+            if($new_passwd=="") $new_passwd=$this->passwd;
+            else $new_passwd=md5(md5($new_passwd));
             $email=mysqli_real_escape_string($db, $email);
             $full_name=mysqli_real_escape_string($db, $full_name);
 
