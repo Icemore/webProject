@@ -68,4 +68,16 @@ create table Block_Category(
 	FOREIGN KEY(block_id) REFERENCES Blocks(block_id),
 	FOREIGN KEY(cat_id) REFERENCES Categories(cat_id)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci;  
+CHARACTER SET utf8 COLLATE utf8_general_ci; 
+
+create table Viewers(
+	sess_id varchar(50) not null,
+	block_id int not null,
+	cur_pos int not null,
+	rand_seed int not null,
+	array_size int not null,
+
+	PRIMARY KEY(sess_id, bock_id),
+	FOREIGN KEY(block_id) REFERENCES Blocks(block_id)
+)
+CHARACTER SET utf8 COLLATE utf8_general_ci; 

@@ -20,6 +20,9 @@ class Adv
 
         $res=$db->query('select * from Adv where adv_id='.$id);
 
+        error_log("Failed to construct Adv ".$id);
+        if(!$res) die();
+
         $this->initFromDbRow($res->fetch_assoc());
     }
 
@@ -170,6 +173,32 @@ class Adv
         $summary=$res->fetch_assoc();
 
         return array('summary' => $summary);
+    }
+
+    static function getCountByType($type){
+        global $db;
+
+        $res=$db->query('select count(*) as cnt from Adv where active=1 and type='.$type);
+        $row=$res->fetch_assoc();
+
+        return $row['cnt'];
+    }
+
+    static function getIdsByType($type){
+        global $db;
+
+        $res=$db->query('select adv_id from Adv where active=1 and type='.$type.' order by adv_id');
+
+        if(!$res){
+            //error_log('Failed to get AdvIds: ('.$db->errno.') '.$db->error);
+            return false;
+        }
+
+        $arr=array();
+        while($row=$res->fetch_assoc())
+            $arr[]=$row['adv_id'];
+
+        return $arr;
     }
 
 }
