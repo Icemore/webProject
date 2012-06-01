@@ -1,21 +1,23 @@
 <?php
-include_once('include/auth.php');
+/*include_once('include/auth.php');
 include_once('models/Adv.php');
 
-$adv=Adv::getByUser($currentUser->user_id);
-
+$adv=Adv::getByUser($currentUser->user_id);*/
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Advertisments</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
     <meta charset="UTF-8">
 </head>
 <body>
-
-<h2>Рекламные объявления</h2>
-<a href="/home/addAdv.php">Добавить</a>
+<?php 
+include('parts/user_name.php');
+?>
+<h1>Advertisments</h1>
+<div id="but"><a href="/home/addAdv.php"><input type="button" value="Add advertisment"></a></div>
 <table border="1">
     <?php
     foreach($adv as $oneAdv){

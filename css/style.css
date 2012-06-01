@@ -37,3 +37,15 @@ body {
 	font-size: 18px;
 	font-family: "Century Gothic";
 	}
+	
+	#name
+	{
+	position:absolute;
+	top: 20px;
+	left: 1200px;
+	}
+	
+	a {
+	color: yellow;
+	font-size: 25px;
+	}

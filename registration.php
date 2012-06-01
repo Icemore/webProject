@@ -8,16 +8,17 @@
 <body>
 <h1>Registration</h1>
 
+<div id="reg">
 <form method='post' action='registration.php'>
-    <div id="reg">
 	<p>Username <input type='text' name="login" value="<?php echo $login ?>"></p>
     <p>Full name <input type='text' name="full_name" value="<?php echo $full_name ?>"></p>
     <p>E-mail <input type="text" name="email" value="<?php echo $email ?>"></p>
     <p>Password <input type="password" name="passwd" value="<?php echo $passwd ?>"></p>
     <p>Confirm the password <input type="password" name="ret_passwd" value="<?php echo $ret_passwd ?>"> </p>
     <p><input type="submit" value='sign up'></p>
-	</div>
 </form>
+</div>
+
 <?php
 
 //Если была попытка регистрации

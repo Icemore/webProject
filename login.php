@@ -1,5 +1,5 @@
 <?php
-session_start();
+/*session_start();
 
 if(isset($_GET['logout'])){
     session_destroy();
@@ -29,17 +29,21 @@ if(isset($_POST['login']) && isset($_POST['passwd'])){
     }
     else
         $loginFailed=true;
-}
+}*/
 ?>
 
 
-
+<?php
+	$titl="Login";
+	include('parts/header.php');
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Login</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
-    <meta charset="UTF-8">
+    
 </head>
 <body>
 
@@ -48,13 +52,13 @@ if(isset($_POST['login']) && isset($_POST['passwd'])){
 
 <h1>Log In</h1>
 
+<div id="log">
 <form method='post' action='login.php'>
-    <div id="log">
 	<p>Username: <input type='text' name='login' size='15'></p>
     <p>Password: <input type='password' name='passwd' size='15'></p>
     <p> <input type='submit' value='login'> </p>
-	</div>
 </form>
+</div>
 
 </body>
 </html>
