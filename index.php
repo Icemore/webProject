@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 </head>
 <body>
-    <h1>Вапроллдлорпа "Post It!" welcomes You.<br></h1>
+    <h1>Здравствуйте! Наша компания "Post It!" приветствует Вас!<br></h1>
     <div id="but">
 	<p><a href="login.php"><input type="button" value="Log In"></a></p>
     <p><a href="registration.php"><input type="button" value="Sign up"></a></p>

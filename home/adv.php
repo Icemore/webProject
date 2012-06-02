@@ -1,8 +1,8 @@
 <?php
-/*include_once('include/auth.php');
+include_once('include/auth.php');
 include_once('models/Adv.php');
 
-$adv=Adv::getByUser($currentUser->user_id);*/
+$adv=Adv::getByUser($currentUser->user_id);
 ?>
 
 <!DOCTYPE html>

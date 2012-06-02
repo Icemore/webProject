@@ -1,5 +1,5 @@
 <?php
-/*session_start();
+session_start();
 
 if(isset($_GET['logout'])){
     session_destroy();
@@ -29,19 +29,19 @@ if(isset($_POST['login']) && isset($_POST['passwd'])){
     }
     else
         $loginFailed=true;
-}*/
+}
 ?>
 
 
 <?php
-	$titl="Login";
-	include('parts/header.php');
+	/*$titl="Login";
+	include('parts/header.php');*/
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Login</title>
+    <title>Вход</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
     
 </head>
@@ -50,13 +50,13 @@ if(isset($_POST['login']) && isset($_POST['passwd'])){
 <?php if(isset($_GET['notify'])) echo '<p>Для того чтобы продолжить вы должны войти</p>'; ?>
 <?php if(isset($loginFailed)) echo '<p>Неверное имя пользователя или пароль</p>'; ?>
 
-<h1>Log In</h1>
+<h1>Вход</h1>
 
 <div id="log">
 <form method='post' action='login.php'>
-	<p>Username: <input type='text' name='login' size='15'></p>
-    <p>Password: <input type='password' name='passwd' size='15'></p>
-    <p> <input type='submit' value='login'> </p>
+	<p>Логин: <input type='text' name='login' size='15'></p>
+    <p>Пароль: <input type='password' name='passwd' size='15'></p>
+    <p> <input type='submit' value='войти'> </p>
 </form>
 </div>
 

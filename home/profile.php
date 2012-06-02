@@ -1,5 +1,5 @@
 <?php
-/*include_once('include/auth.php');
+include_once('include/auth.php');
 global $currentUser;
 
 if(!isset($_POST['save'])){
@@ -24,14 +24,14 @@ else{
         $dataSaved=true;
     else
         $dataSaved=false;
-}*/
+}
 
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Profile</title>
+    <title>Профиль</title>
 	<link rel="stylesheet" type="text/css" href="../css/style.css" />
     <meta charset="UTF-8">
 </head>
@@ -52,18 +52,18 @@ else{
 ?>
 
 
-<h1>Username: <?php $currentUser->name ?></h1>
+<h1>Логин: <?php echo ".$currentUser->login." ?></h1>
 
 <form method="post" action="">
 <div id="reg">
-    <p>Full name <input type="text" name="full_name" value="<?php echo $full_name ?>"></p>
+    <p>Полное имя <input type="text" name="full_name" value="<?php echo $full_name ?>"></p>
     <p>E-mail <input type="text" name="email" value="<?php echo $email ?>"></p>
-    <p>Old password <input type="password" name="passwd" value="<?php echo $passwd ?>"></p>
-    <p>New password <input type="password" name="new_passwd" value="<?php echo $new_passwd ?>"></p>
-    <p>Repeat new password <input  type="password" name="ret_new_passwd" value="<?php echo $ret_new_passwd ?>"></p>
+    <p>Старый пароль <input type="password" name="passwd" value="<?php echo $passwd ?>"></p>
+    <p>Новый пароль <input type="password" name="new_passwd" value="<?php echo $new_passwd ?>"></p>
+    <p>Повторите новый пароль <input  type="password" name="ret_new_passwd" value="<?php echo $ret_new_passwd ?>"></p>
 
-    <p><input type="submit" name="save" value="save">
-	<a href="../home.php"><input type="button" value="return to the main page"></a></p>
+    <p><input type="submit" name="save" value="сохранить">
+	<a href="../home.php"><input type="button" value="на главную"></a></p>
 	</div>
 </form>
 
