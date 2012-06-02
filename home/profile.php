@@ -27,15 +27,11 @@ else{
 }
 
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Профиль</title>
-	<link rel="stylesheet" type="text/css" href="../css/style.css" />
-    <meta charset="UTF-8">
-</head>
-<body>
+<?php
+$title='';
+$css=array('style.css');
+?>
+<?php include('parts/header.php'); ?>
 
 <?php
     if($dataSaved)
@@ -67,5 +63,4 @@ else{
 	</div>
 </form>
 
-</body>
-</html>
+<?php include('parts/footer.php'); ?>

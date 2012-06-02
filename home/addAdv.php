@@ -58,14 +58,11 @@ if($_POST['action']=='addAdv'){
 }
 
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-    <meta charset="UTF-8">
-</head>
-<body>
+<?php
+$title='';
+$css=array('style.css');
+?>
+<?php include('parts/header.php'); ?>
 
 <?php
 if(isset($regErrors)){
@@ -123,5 +120,4 @@ if(isset($regErrors)){
     ?>
 
 
-</body>
-</html>
+<?php include('parts/footer.php'); ?>

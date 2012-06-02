@@ -1,30 +1,28 @@
 <?php
 //Если была попытка регистрации
 if(isset($_POST['login'])){
-error_log("qwert");
     $login=trim($_POST['login']);
     $passwd=trim($_POST['passwd']);
     $ret_passwd=trim($_POST['ret_passwd']);
     $full_name=trim($_POST['full_name']);
     $email=trim($_POST['email']);
+
     include_once('include/db.php');
     include_once('models/User.php');
+
     $regErrors=User::addUser($login, $passwd, $ret_passwd, $full_name, $email);
+
     if(!$regErrors){
         header('Location: successful.php');
 		die();
-}
+    }
 }
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Регистрация</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
-</head>
-<body>
+<?php
+$title='Регистрация';
+$css=array('style.css');
+?>
+<?php include('parts/header.php'); ?>
 
 <?php
     if(isset($regErrors)){
@@ -48,5 +46,4 @@ error_log("qwert");
 </form>
 </div>
 
-</body>
-</html>
+<?php include('parts/footer.php'); ?>

@@ -77,7 +77,7 @@ create table Viewers(
 	rand_seed int not null,
 	array_size int not null,
 
-	PRIMARY KEY(sess_id, bock_id),
+	PRIMARY KEY(sess_id, block_id),
 	FOREIGN KEY(block_id) REFERENCES Blocks(block_id)
 )
 CHARACTER SET utf8 COLLATE utf8_general_ci; 

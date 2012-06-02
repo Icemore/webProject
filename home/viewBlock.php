@@ -31,14 +31,11 @@ $categories=Category::getForBlock($currentBlock->block_id);
 $stat = $currentBlock->getStatistics();
 
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-    <meta charset="UTF-8">
-</head>
-<body>
+<?php
+$title='';
+$css=array('');
+?>
+<?php include('parts/header.php'); ?>
 
 <h2>Рекламный блок № <?php echo $currentBlock->block_id ?> </h2>
 <p>Тип: <?php echo $currentType ?> </p>
@@ -69,5 +66,4 @@ if($currentSubtype!="")
     }
     ?>
 
-</body>
-</html>
+<?php include('parts/footer.php'); ?>

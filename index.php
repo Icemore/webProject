@@ -1,14 +1,20 @@
-﻿<html>
-<head>
-    <title>Post it!</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
-    <meta charset="UTF-8">
-</head>
-<body>
+﻿<?php
+    session_start();
+    if(isset($_SESSION['AUTH_OK'])){
+        header('Location: /home.php');
+        die();
+    }
+?>
+<?php
+    $title='Post it!';
+    $css=array('style.css');
+?>
+<?php include('parts/header.php'); ?>
+
     <h1>Здравствуйте! Наша компания "Post It!" приветствует Вас!<br></h1>
     <div id="but">
 	<p><a href="login.php"><input type="button" value="Log In"></a></p>
     <p><a href="registration.php"><input type="button" value="Sign up"></a></p>
 	</div>
-</body>
-</html>
+
+<?php include('parts/footer.php'); ?>

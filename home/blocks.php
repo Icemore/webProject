@@ -5,15 +5,13 @@ include_once('models/Block.php');
 $blocks=Block::getByUser($currentUser->user_id);
 
 ?>
+<?php
+$title='';
+$css=array('');
+?>
+<?php include('parts/header.php'); ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-    <meta charset="UTF-8">
-</head>
-<body>
-    <h2>Рекламные блоки</h2>
+<h2>Рекламные блоки</h2>
     <a href="/home/addBlock.php">Добавить</a>
     <table border="1">
         <?php
@@ -33,5 +31,4 @@ $blocks=Block::getByUser($currentUser->user_id);
 
     </table>
 
-</body>
-</html>
+<?php include('parts/footer.php'); ?>

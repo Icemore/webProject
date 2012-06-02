@@ -26,16 +26,13 @@ $categories=Category::getForAdv($currentAdv->adv_id);
 $stat=$currentAdv->getStatistics();
 
 ?>
+<?php
+$title='';
+$css=array('');
+?>
+<?php include('parts/header.php'); ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-    <meta charset="UTF-8">
-</head>
-<body>
-
-    <h2>Рекламное объявление № <?php echo $currentAdv->adv_id ?> </h2>
+<h2>Рекламное объявление № <?php echo $currentAdv->adv_id ?> </h2>
     <p>Тип: <?php echo $currentType->name ?> </p>
 
     <?php
@@ -61,5 +58,4 @@ $stat=$currentAdv->getStatistics();
     <p>Всего просмотров: <?php echo $stat['summary']['views'] ?></p>
     <p>Всего переходов: <?php echo $stat['summary']['clicks'] ?></p>
 
-</body>
-</html>
+<?php include('parts/footer.php'); ?>

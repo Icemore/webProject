@@ -34,14 +34,11 @@ if($_POST['action']=='addBlock'){
 }
 
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-    <meta charset="UTF-8">
-</head>
-<body>
+<?php
+$title='';
+$css=array('');
+?>
+<?php include('parts/header.php'); ?>
 
     <?php
         if(isset($regErrors)){
@@ -98,5 +95,4 @@ if($_POST['action']=='addBlock'){
     ?>
 
 
-</body>
-</html>
+<?php include('parts/footer.php'); ?>

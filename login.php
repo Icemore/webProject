@@ -31,21 +31,11 @@ if(isset($_POST['login']) && isset($_POST['passwd'])){
         $loginFailed=true;
 }
 ?>
-
-
 <?php
-	/*$titl="Login";
-	include('parts/header.php');*/
+$title='Вход';
+$css=array('style.css');
 ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Вход</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
-    
-</head>
-<body>
+<?php include('parts/header.php'); ?>
 
 <?php if(isset($_GET['notify'])) echo '<p>Для того чтобы продолжить вы должны войти</p>'; ?>
 <?php if(isset($loginFailed)) echo '<p>Неверное имя пользователя или пароль</p>'; ?>
@@ -60,5 +50,4 @@ if(isset($_POST['login']) && isset($_POST['passwd'])){
 </form>
 </div>
 
-</body>
-</html>
+<?php include('parts/footer.php'); ?>

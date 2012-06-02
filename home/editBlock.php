@@ -52,14 +52,11 @@ else{
 }
 
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-    <meta charset="UTF-8">
-</head>
-<body>
+<?php
+$title='';
+$css=array('');
+?>
+<?php include('parts/header.php'); ?>
 
 <?php
     if($dataSaved)
@@ -90,5 +87,4 @@ else{
 
 <p><a href="/home/blocks.php">Назад</a></p>
 
-</body>
-</html>
+<?php include('parts/footer.php'); ?>

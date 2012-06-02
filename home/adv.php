@@ -4,19 +4,14 @@ include_once('models/Adv.php');
 
 $adv=Adv::getByUser($currentUser->user_id);
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Моя реклама</title>
-	<link rel="stylesheet" type="text/css" href="/css/style1.css" />
-    <meta charset="UTF-8">
-</head>
-<body>
-<?php 
-include('parts/user_name.php');
+<?php
+$title='';
+$css=array('style1.css');
 ?>
-<img src="../img/risun.jpg"/>
+<?php include('parts/header.php'); ?>
+<?php include('parts/user_name.php'); ?>
+
+<img src="/img/risun.jpg"/>
 <div id="but"><a href="/home/addAdv.php"><input type="button" value="Добавить рекламу"></a></div>
 <table border="1">
     <?php
@@ -37,5 +32,4 @@ include('parts/user_name.php');
 </table>
 
 
-</body>
-</html>
+<?php include('parts/footer.php'); ?>

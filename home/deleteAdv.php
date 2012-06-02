@@ -34,14 +34,11 @@ if(isset($_POST['confirm'])){
 }
 
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-    <meta charset="UTF-8">
-</head>
-<body>
+<?php
+$title='';
+$css=array('');
+?>
+<?php include('parts/header.php'); ?>
 
 <?php
 if(isset($error))
@@ -58,5 +55,4 @@ if(isset($error))
     <input type="hidden" name="adv_id" value="<?php echo $currentAdv->adv_id ?>">
 </form>
 
-</body>
-</html>
+<?php include('parts/footer.php'); ?>
