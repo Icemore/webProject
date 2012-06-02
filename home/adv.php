@@ -8,16 +8,16 @@ $adv=Adv::getByUser($currentUser->user_id);
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Advertisments</title>
-	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>Моя реклама</title>
+	<link rel="stylesheet" type="text/css" href="/css/style1.css" />
     <meta charset="UTF-8">
 </head>
 <body>
 <?php 
 include('parts/user_name.php');
 ?>
-<h1>Advertisments</h1>
-<div id="but"><a href="/home/addAdv.php"><input type="button" value="Add advertisment"></a></div>
+<img src="../img/risun.jpg"/>
+<div id="but"><a href="/home/addAdv.php"><input type="button" value="Добавить рекламу"></a></div>
 <table border="1">
     <?php
     foreach($adv as $oneAdv){
