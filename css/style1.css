@@ -1,0 +1,16 @@
+body
+{
+background-color:Khaki;
+}
+
+#name
+	{
+	position:absolute;
+	top: 20px;
+	left: 1200px;
+	}
+	
+	a {
+	color: SaddleBrown;
+	font-size: 25px;
+	}
