@@ -3,6 +3,7 @@ include_once('include/auth.php');
 include_once('include/types.php');
 include_once('models/Block.php');
 include_once('models/Category.php');
+global $currentUser, $types;
 
 if(!isset($_GET['block_id'])){
     header('Location: /home/blocks.php');
@@ -56,14 +57,5 @@ if($currentSubtype!="")
     <p>Всего просмотров: <?php echo $stat['summary']['views'] ?></p>
     <p>Всего переходов: <?php echo $stat['summary']['clicks'] ?></p>
 
-    <?php
-    if($stat['byUrl']!=null){
-        echo "<p>Переходы на сайты:</p>";
-
-            foreach($stat['byUrl'] as $row){
-                echo "<p>{$row['url']}: {$row['clicks']}</p>";
-            }
-    }
-    ?>
 
 <?php include('parts/footer.php'); ?>
