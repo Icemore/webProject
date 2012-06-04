@@ -5,6 +5,11 @@
  * Вернет готовый блок с рекламой
  */
 
+include_once('include/types.php');
+include_once('models/Adv.php');
+include_once('models/Block.php');
+global $types;
+
 if(!isset($_GET['block_id']) || !isset($_GET['adv_ids'])) die();
 
 $block_id=$_GET['block_id'];
@@ -13,10 +18,6 @@ $adv_ids=explode(',', $_GET['adv_ids']);
 
 if(!is_numeric($block_id)) die();
 
-include_once('include/types.php');
-include_once('models/Adv.php');
-include_once('models/Block.php');
-global $types;
 
 $block=new Block($block_id);
 $adv=getAdv($adv_ids);
