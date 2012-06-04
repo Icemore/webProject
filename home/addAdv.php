@@ -60,7 +60,7 @@ if($_POST['action']=='addAdv'){
 ?>
 <?php
 $title='';
-$css=array('style.css');
+$css=array('style1.css');
 ?>
 <?php include('parts/header.php'); ?>
 
