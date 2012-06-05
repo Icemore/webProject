@@ -59,7 +59,7 @@ $css=array('style.css');
     <p>Повторите новый пароль <input  type="password" name="ret_new_passwd" value="<?php echo $ret_new_passwd ?>"></p>
 
     <p><input type="submit" name="save" value="сохранить">
-	<a href="../home.php"><input type="button" value="на главную"></a></p>
+	<a href="/home.php"><input type="button" value="на главную"></a></p>
 	</div>
 </form>
 

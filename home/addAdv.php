@@ -59,7 +59,7 @@ if($_POST['action']=='addAdv'){
 
 ?>
 <?php
-$title='Добавить рекламу';
+$title='';
 $css=array('style1.css');
 ?>
 <?php include('parts/header.php'); ?>

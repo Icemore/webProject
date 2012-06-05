@@ -1,6 +1,5 @@
 <?php
-
-
+include_once('include/db.php');
 
 class User{
     var $user_id;

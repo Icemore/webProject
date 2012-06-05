@@ -15,7 +15,6 @@ $block_id=$_GET['block_id'];
 
 if(!is_numeric($adv_id) || !is_numeric($block_id)) die();
 
-include_once('include/db.php');
 include_once('models/Adv.php');
 include_once('models/Block.php');
 
