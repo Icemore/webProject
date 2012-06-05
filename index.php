@@ -13,8 +13,8 @@
 
     <h1>Здравствуйте! Наша компания "Post It!" приветствует Вас!<br></h1>
     <div id="but">
-	<p><a href="login.php"><input type="button" value="Log In"></a></p>
-    <p><a href="registration.php"><input type="button" value="Sign up"></a></p>
+	<p><a href="login.php"><input type="button" value="Войти"></a></p>
+    <p><a href="registration.php"><input type="button" value="Зарегистрироваться"></a></p>
 	</div>
 
 <?php include('parts/footer.php'); ?>

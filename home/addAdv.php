@@ -59,10 +59,12 @@ if($_POST['action']=='addAdv'){
 
 ?>
 <?php
-$title='';
-$css=array('style.css');
+$title='Добавить рекламу';
+$css=array('style1.css');
 ?>
 <?php include('parts/header.php'); ?>
+
+<h1>Выберите тип рекламы:</h1>
 
 <?php
 if(isset($regErrors)){

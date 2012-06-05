@@ -37,7 +37,7 @@ $css=array('style.css');
 
 <div id="reg">
 <form method='post' action='registration.php'>
-	<p>Логин <input type='text' name="login" value="<?php echo $login ?>"></p>
+	<p>Логин <input type='text' name="login" maxlength="15" value="<?php echo $login ?>"></p>
     <p>Полное имя <input type='text' name="full_name" value="<?php echo $full_name ?>"></p>
     <p>E-mail <input type="text" name="email" value="<?php echo $email ?>"></p>
     <p>Пароль <input type="password" name="passwd" value="<?php echo $passwd ?>"></p>

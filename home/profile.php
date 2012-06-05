@@ -28,7 +28,7 @@ else{
 
 ?>
 <?php
-$title='';
+$title='Профиль';
 $css=array('style.css');
 ?>
 <?php include('parts/header.php'); ?>
@@ -48,12 +48,12 @@ $css=array('style.css');
 ?>
 
 
-<h1>Логин: <?php echo ".$currentUser->login." ?></h1>
+<h1>Логин: <?php echo $currentUser->name ?></h1>
 
 <form method="post" action="">
 <div id="reg">
     <p>Полное имя <input type="text" name="full_name" value="<?php echo $full_name ?>"></p>
-    <p>E-mail <input type="text" name="email" value="<?php echo $email ?>"></p>
+    <p>E-mail <input type="text" name="email" maxlength="30" value="<?php echo $email ?>"></p>
     <p>Старый пароль <input type="password" name="passwd" value="<?php echo $passwd ?>"></p>
     <p>Новый пароль <input type="password" name="new_passwd" value="<?php echo $new_passwd ?>"></p>
     <p>Повторите новый пароль <input  type="password" name="ret_new_passwd" value="<?php echo $ret_new_passwd ?>"></p>

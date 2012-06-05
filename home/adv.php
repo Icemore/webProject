@@ -5,7 +5,7 @@ include_once('models/Adv.php');
 $adv=Adv::getByUser($currentUser->user_id);
 ?>
 <?php
-$title='';
+$title='Моя реклама';
 $css=array('style1.css');
 ?>
 <?php include('parts/header.php'); ?>

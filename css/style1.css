@@ -1,6 +1,6 @@
 body
 {
-background-color:Khaki;
+background-image:url("../img/345.jpg");
 }
 
 #name
@@ -11,6 +11,6 @@ background-color:Khaki;
 	}
 	
 	a {
-	color: SaddleBrown;
+	color: BlanchedAlmond;
 	font-size: 25px;
 	}
