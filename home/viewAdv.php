@@ -27,8 +27,8 @@ $stat=$currentAdv->getStatistics();
 
 ?>
 <?php
-$title='';
-$css=array('');
+$title='Просмотр';
+$css=array('style1.css');
 ?>
 <?php include('parts/header.php'); ?>
 

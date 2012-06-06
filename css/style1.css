@@ -3,7 +3,13 @@ body
 background-image:url("../img/345.jpg");
 }
 
-#name
+	h1 {
+	color: BlanchedAlmond;
+	font-size: 25px;
+	font-family: "Century Gothic";
+	}
+
+	#name
 	{
 	position:absolute;
 	top: 20px;
@@ -17,4 +23,22 @@ background-image:url("../img/345.jpg");
 	
 	h3 {
 	color: BlanchedAlmond;
+	}
+	
+	.field {clear:both; text-align:right;}
+	label {float:left;}
+	.main {float:left}
+	
+	table
+	{
+	position:absolute;
+	top: 150px;
+	right: 500px;
+	}
+	
+	caption
+	{
+	color: BlanchedAlmond;
+	font-size: 25px;
+	font-family: "Century Gothic";
 	}

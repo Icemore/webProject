@@ -63,6 +63,9 @@ $title='Добавить рекламу';
 $css=array('style1.css');
 ?>
 <?php include('parts/header.php'); ?>
+<?php include('parts/user_name.php'); ?>
+
+<a href="/home.php"><img src="/img/logo.jpg"/></a>
 
 <h1>Выберите тип рекламы:</h1>
 
@@ -94,29 +97,26 @@ if(isset($regErrors)){
     <?php //Прошу прощения за это, но как сделать по-другому я не знаю
     if(isset($currentType)){
         echo '<form method="post" enctype="multipart/form-data" action="">';
-
-
-        echo '<p>Имя <input type="text" name="name" value="'.$name.'"></p>';
-
+		echo '<div class="main">';
+        echo '<div class="field"><label for="name">Имя</label><input type="text" name="name" value="'.$name.'" /></div>';
         if($currentType->hasCaption)
-            echo '<p>Заголовок</p> <div id="1"><input type="text" name="caption" value="'.$caption.'"></div>';
-
-        if($currentType->hasText)
-            echo '<p>Текст объявления <input type="text" name="text" value="'.$text.'"></p>';
+            echo '<div class="field"><label for="caption">Заголовок</label><input type="text" name="caption" value="'.$caption.'"></div>';
+		if($currentType->hasText)
+            echo '<div class="field"><label for="text">Текст объявления</label><input type="text" name="text" value="'.$text.'"></div>';
 
         if($currentType->hasImage){
             echo '<input type="hidden" name="MAX_FILE_SIZE" value="512000">';
-            echo '<p>Изображение <input name="adv_img" type="file"></p>';
+            echo '<div class="field"><label for="adv_img">Изображение</label> <input name="adv_img" type="file"></div>';
         }
 
-        echo '<p>url <input type="text" name="url" value="'.$url.'"</p>';
+        echo '<div class="field"><label for="url">url</label> <input type="text" name="url" value="'.$url.'"</div>';
 
-        echo '<p>Категории (отделяйте точкой с запятой) <input type="text" name="categories" value="'.$categories.'"></p>';
+        echo '<div class="field"><label for="categories">Категории (отделяйте точкой с запятой)</label> <input type="text" name="categories" value="'.$categories.'"></div>';
 
         echo '<input type="hidden" name="type" value="'.$currentType->id.'">';
         echo '<input type="hidden" name="action" value="addAdv">';
         echo '<input type="submit" value="Добавить">';
-
+		echo '</div>';
         echo '</form>';
     }
     ?>

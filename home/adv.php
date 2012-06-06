@@ -11,9 +11,17 @@ $css=array('style1.css');
 <?php include('parts/header.php'); ?>
 <?php include('parts/user_name.php'); ?>
 
-<img src="/img/risun.jpg"/>
+<a href="/home.php"><img src="/img/logo.jpg"/></a>
 <div id="but"><a href="/home/addAdv.php"><input type="button" value="Добавить рекламу"></a></div>
-<table border="1">
+<table border="3" cellspacing="5" bordercolor="maroon">
+<thead style="color:BlanchedAlmond">
+<caption> Реклама пользователя <?php echo $currentUser->name ?> </caption>
+ <tr>
+  <th>Номер</th>
+  <th>Имя</th>
+  <th>Действия</th>
+ </tr>
+</thead>
     <?php
     foreach($adv as $oneAdv){
         echo '<tr>';
