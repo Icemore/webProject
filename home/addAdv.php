@@ -59,7 +59,7 @@ if($_POST['action']=='addAdv'){
 
 ?>
 <?php
-$title='';
+$title='Добавить рекламу';
 $css=array('style1.css');
 ?>
 <?php include('parts/header.php'); ?>
@@ -99,7 +99,7 @@ if(isset($regErrors)){
         echo '<p>Имя <input type="text" name="name" value="'.$name.'"></p>';
 
         if($currentType->hasCaption)
-            echo '<p>Заголовок <input type="text" name="caption" value="'.$caption.'"></p>';
+            echo '<p>Заголовок</p> <div id="1"><input type="text" name="caption" value="'.$caption.'"></div>';
 
         if($currentType->hasText)
             echo '<p>Текст объявления <input type="text" name="text" value="'.$text.'"></p>';
