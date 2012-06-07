@@ -11,12 +11,14 @@ $css=array('style1.css');
 <?php include('parts/header.php'); ?>
 <?php include('parts/user_name.php'); ?>
 
-<a href="/home.php"><img src="/img/logo.jpg"/></a>
-<div id="but"><a href="/home/addAdv.php"><input type="button" value="Добавить рекламу"></a></div>
-<table border="3" cellspacing="5" bordercolor="maroon">
+<a href="/home.php"><img src="/img/logo.jpg"/></a><br />
+<div id="navig"><a href="/home/adv.php">Моя реклама</a><br />
+<a href="/home/blocks.php">Мои блоки</a></div>
+<a href="/home/addAdv.php">Добавить рекламу</a>
+<table width="40%" border="3" cellspacing="5" bordercolor="maroon">
 <thead style="color:BlanchedAlmond">
 <caption> Реклама пользователя <?php echo $currentUser->name ?> </caption>
- <tr>
+ <tr width="100">
   <th>Номер</th>
   <th>Имя</th>
   <th>Действия</th>

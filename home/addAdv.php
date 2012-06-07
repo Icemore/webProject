@@ -66,8 +66,10 @@ $css=array('style1.css');
 <?php include('parts/user_name.php'); ?>
 
 <a href="/home.php"><img src="/img/logo.jpg"/></a>
+<div id="navig"><a href="/home/adv.php">Моя реклама</a><br />
+<a href="/home/blocks.php">Мои блоки</a></div>
 
-<h1>Выберите тип рекламы:</h1>
+<div id="add"><h1 style="color:maroon">Выберите тип рекламы:</h1>
 
 <?php
 if(isset($regErrors)){
@@ -92,8 +94,9 @@ if(isset($regErrors)){
         <input type="submit" value="Выбрать">
         <input name="action" type="hidden" value="select_type">
     </form>
+</div>
 
-
+<div id="add1">
     <?php //Прошу прощения за это, но как сделать по-другому я не знаю
     if(isset($currentType)){
         echo '<form method="post" enctype="multipart/form-data" action="">';
@@ -109,7 +112,7 @@ if(isset($regErrors)){
             echo '<div class="field"><label for="adv_img">Изображение</label> <input name="adv_img" type="file"></div>';
         }
 
-        echo '<div class="field"><label for="url">url</label> <input type="text" name="url" value="'.$url.'"</div>';
+        echo '<div class="field"><label for="url">URL</label> <input type="text" name="url" value="'.$url.'"</div>';
 
         echo '<div class="field"><label for="categories">Категории (отделяйте точкой с запятой)</label> <input type="text" name="categories" value="'.$categories.'"></div>';
 
@@ -120,6 +123,6 @@ if(isset($regErrors)){
         echo '</form>';
     }
     ?>
-
+</div>
 
 <?php include('parts/footer.php'); ?>

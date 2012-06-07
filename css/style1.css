@@ -8,13 +8,43 @@ background-image:url("../img/345.jpg");
 	font-size: 25px;
 	font-family: "Century Gothic";
 	}
+	
+	h2 {
+	color: chocolate;
+	font-size: 25px;
+	font-family: "Century Gothic";
+	}
 
 	#name
 	{
 	position:absolute;
 	top: 20px;
 	right: 10px;
-}
+	}
+	
+	.text {position:absolute;left:500px;text-align: center;background-color: saddlebrown;border: 8px solid maroon;}
+	
+	#add 
+	{
+	position:absolute;
+	top:100px;
+	margin-left:470px;
+	text-align: center;
+	}
+	
+	#add1
+	{
+	position:absolute;
+	top:350px;
+	margin-left:320px;
+	text-align: center;
+	}
+	
+	#navig
+	{
+	position:absolute;
+	top: 170px;
+	}
 	
 	a {
 	color: BlanchedAlmond;
@@ -27,18 +57,29 @@ background-image:url("../img/345.jpg");
 	
 	.field {clear:both; text-align:right;}
 	label {float:left;}
-	.main {float:left}
+	.main {float:left;color:BlanchedAlmond;font-size: 25px;}
+	
+	p{
+	font-size: 20px;
+	color:BlanchedAlmond;
+	}
 	
 	table
 	{
+	background-color: saddlebrown;
 	position:absolute;
 	top: 150px;
-	right: 500px;
+	right: 400px;
 	}
 	
 	caption
 	{
 	color: BlanchedAlmond;
-	font-size: 25px;
+	font-size: 30px;
 	font-family: "Century Gothic";
+	}
+	
+	th{
+	background-color: chocolate;
+	color: BlanchedAlmond;
 	}

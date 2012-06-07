@@ -31,8 +31,13 @@ $title='Просмотр';
 $css=array('style1.css');
 ?>
 <?php include('parts/header.php'); ?>
+<?php include('parts/user_name.php'); ?>
 
-<h2>Рекламное объявление № <?php echo $currentAdv->adv_id ?> </h2>
+<a href="/home.php"><img src="/img/logo.jpg"/></a><br />
+<div id="navig"><a href="/home/adv.php">Моя реклама</a><br />
+<a href="/home/blocks.php">Мои блоки</a></div>
+
+<div class="text"><h2>Рекламное объявление № <?php echo $currentAdv->adv_id ?></h2>
     <p>Тип: <?php echo $currentType->name ?> </p>
 
     <?php
@@ -51,11 +56,10 @@ $css=array('style1.css');
 
     <p>url: <?php echo $currentAdv->url; ?></p>
     <p>Категории: <?php echo $categories ?></p>
-
-
-    <p><a href="/home/adv.php">Назад</a></p>
-
     <p>Всего просмотров: <?php echo $stat['summary']['views'] ?></p>
     <p>Всего переходов: <?php echo $stat['summary']['clicks'] ?></p>
+	
+    <p><a href="/home/adv.php"><input type="button" value="Назад"></a></p>
+	</div>
 
 <?php include('parts/footer.php'); ?>
