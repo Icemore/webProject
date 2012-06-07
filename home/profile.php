@@ -51,16 +51,19 @@ $css=array('style.css');
 <h1>Логин: <?php echo $currentUser->name ?></h1>
 
 <form method="post" action="">
+<div class="main">
 <div id="reg">
-    <p>Полное имя <input type="text" name="full_name" value="<?php echo $full_name ?>"></p>
-    <p>E-mail <input type="text" name="email" maxlength="30" value="<?php echo $email ?>"></p>
-    <p>Старый пароль <input type="password" name="passwd" value="<?php echo $passwd ?>"></p>
-    <p>Новый пароль <input type="password" name="new_passwd" value="<?php echo $new_passwd ?>"></p>
-    <p>Повторите новый пароль <input  type="password" name="ret_new_passwd" value="<?php echo $ret_new_passwd ?>"></p>
+    <div class="field"><label for="name">Полное имя</label> <input type="text" name="full_name" value="<?php echo $full_name ?>"></div>
+    <div class="field"><label for="email">E-mail</label> <input type="text" name="email" value="<?php echo $email ?>"></div>
+    <div class="field"><label for="passwd">Старый пароль</label> <input type="password" name="passwd" value="<?php echo $passwd ?>"></div>
+    <div class="field"><label for="new_passwd">Новый пароль</label> <input type="password" name="new_passwd" value="<?php echo $new_passwd ?>"></div>
+    <div class="field"><label for="ret_new_passwd">Повторите новый пароль</label> <input  type="password" name="ret_new_passwd" value="<?php echo $ret_new_passwd ?>"></div>
 
-    <p><input type="submit" name="save" value="сохранить">
-	<a href="/home.php"><input type="button" value="на главную"></a></p>
+    <input type="submit" name="save" value="сохранить">
+	<a href="/home.php"><input type="button" value="на главную"></a>
 	</div>
+</div>
 </form>
+
 
 <?php include('parts/footer.php'); ?>

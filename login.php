@@ -46,7 +46,8 @@ $css=array('style.css');
 <form method='post' action='login.php'>
 	<p>Логин: <input type='text' name='login' size='15'></p>
     <p>Пароль: <input type='password' name='passwd' size='15'></p>
-    <p> <input type='submit' value='войти'> </p>
+    <p> <input type='submit' value='войти'> 
+	<a href="/index.php"><input type="button" value="назад"></a></p>
 </form>
 </div>
 

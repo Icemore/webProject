@@ -11,6 +11,10 @@ body {
 	font-family: "Century Gothic";
 	}
 	
+	.field {clear:both; text-align:right;}
+	label {float:left;}
+	.main {float:left;color:BlanchedAlmond;font-size: 25px;}
+	
 	#but
 	{
 	position: absolute; 
@@ -31,7 +35,7 @@ body {
 	#reg
 	{
 	position:absolute;
-	top: 200px;
+	top: 220px;
 	left: 600px;
 	color: yellow;
 	font-size: 18px;

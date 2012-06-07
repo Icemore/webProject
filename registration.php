@@ -35,15 +35,20 @@ $css=array('style.css');
 
 <h1>Регистрация</h1>
 
-<div id="reg">
+
 <form method='post' action='registration.php'>
-	<p>Логин <input type='text' name="login" maxlength="15" value="<?php echo $login ?>"></p>
-    <p>Полное имя <input type='text' name="full_name" value="<?php echo $full_name ?>"></p>
-    <p>E-mail <input type="text" name="email" value="<?php echo $email ?>"></p>
-    <p>Пароль <input type="password" name="passwd" value="<?php echo $passwd ?>"></p>
-    <p>Повторите пароль <input type="password" name="ret_passwd" value="<?php echo $ret_passwd ?>"> </p>
-    <p><input type="submit" value='sign up'></p>
-</form>
+<div class="main">
+<div id="reg">
+	<div class="field"><label for="name">Логин</label> <input type='text' name="login" value="<?php echo $login ?>"></div>
+    <div class="field"><label for="full_name">Полное имя</label> <input type='text' name="full_name" value="<?php echo $full_name ?>"></div>
+    <div class="field"><label for="email">E-mail</label> <input type="text" name="email" value="<?php echo $email ?>"></div>
+    <div class="field"><label for="passwd">Пароль</label> <input type="password" name="passwd" value="<?php echo $passwd ?>"></div>
+    <div class="field"><label for="ret_passwd">Повторите пароль</label> <input type="password" name="ret_passwd" value="<?php echo $ret_passwd ?>"> </div>
+    <p><input type="submit" value='зарегистрироваться'>
+	<a href="/index.php"><input type="button" value="назад"></a></p>
+	</div>
 </div>
+</form>
+
 
 <?php include('parts/footer.php'); ?>
