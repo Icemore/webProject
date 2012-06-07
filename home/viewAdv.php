@@ -34,8 +34,7 @@ $css=array('style1.css');
 <?php include('parts/user_name.php'); ?>
 
 <a href="/home.php"><img src="/img/logo.jpg"/></a><br />
-<div id="navig"><a href="/home/adv.php">Моя реклама</a><br />
-<a href="/home/blocks.php">Мои блоки</a></div>
+<?php include("parts/navigation.php"); ?>
 
 <div class="text"><h2>Рекламное объявление № <?php echo $currentAdv->adv_id ?></h2>
     <p>Тип: <?php echo $currentType->name ?> </p>

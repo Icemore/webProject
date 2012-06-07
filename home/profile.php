@@ -32,6 +32,7 @@ $title='Профиль';
 $css=array('style.css');
 ?>
 <?php include('parts/header.php'); ?>
+<?php include("parts/navigation.php"); ?>
 
 <?php
     if($dataSaved)

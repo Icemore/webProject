@@ -66,8 +66,8 @@ $css=array('style1.css');
 <?php include('parts/user_name.php'); ?>
 
 <a href="/home.php"><img src="/img/logo.jpg"/></a>
-<div id="navig"><a href="/home/adv.php">Моя реклама</a><br />
-<a href="/home/blocks.php">Мои блоки</a></div>
+
+<?php include("parts/navigation.php"); ?>
 
 <div id="add"><h1 style="color:maroon">Выберите тип рекламы:</h1>
 
