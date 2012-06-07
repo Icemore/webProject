@@ -24,7 +24,7 @@ $currentType=$types[$currentAdv->type];
 $categories=Category::getForAdv($currentAdv->adv_id);
 
 $stat=$currentAdv->getStatistics();
-
+$adv=Adv::getByUser($currentUser->user_id);
 ?>
 <?php
 $title='Просмотр';
@@ -57,9 +57,14 @@ $css=array('style1.css');
     <p>url: <?php echo $currentAdv->url; ?></p>
     <p>Категории: <?php echo $categories ?></p>
     <p>Всего просмотров: <?php echo $stat['summary']['views'] ?></p>
-    <p>Всего переходов: <?php echo $stat['summary']['clicks'] ?></p>
+    <p>Всего переходов: <?php echo $stat['summary']['clicks'] ?></p><br />
 	
-    <p><a href="/home/adv.php"><input type="button" value="Назад"></a></p>
+	<?php
+	foreach($adv as $oneAdv){
+        echo "<a href=\"/home/editAdv.php?adv_id={$oneAdv->adv_id}\";>Редактировать</a>";}
+    ?>
+	
+    <p><a href="/home/adv.php">Назад</a></p>
 	</div>
 
 <?php include('parts/footer.php'); ?>

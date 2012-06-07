@@ -50,11 +50,17 @@ else{
 
 ?>
 <?php
-$title='';
-$css=array('');
+$title='Редактировать';
+$css=array('style1.css');
 ?>
 <?php include('parts/header.php'); ?>
+<?php include('parts/user_name.php'); ?>
 
+<a href="/home.php"><img src="/img/logo.jpg"/></a><br />
+<div id="navig"><a href="/home/adv.php">Моя реклама</a><br />
+<a href="/home/blocks.php">Мои блоки</a></div>
+
+<div class="text">
 <?php
 if($dataSaved)
     echo "<p>Изменения сохранены</p>";
@@ -86,11 +92,11 @@ if($errors){
     ?>
 
     <p>url <input type="text" name="url" value="<?php echo $url; ?>"></p>
-    <p>Категории (отделяйте точкой с запятой) <input type="text" name="categories" value="<?php echo $categories ?>"></p>
+    <p>Категории (отделяйте точкой с запятой)<br /> <input type="text" name="categories" value="<?php echo $categories ?>"></p>
 
     <input type="submit" name="save" value="Сохранить">
 </form>
 
-<p><a href="/home/adv.php">Назад</a></p>
-
+<a href="/home/adv.php"><input type="button" value="Назад"></a>
+</div>
 <?php include('parts/footer.php'); ?>

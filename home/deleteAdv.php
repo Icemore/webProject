@@ -35,24 +35,30 @@ if(isset($_POST['confirm'])){
 
 ?>
 <?php
-$title='';
-$css=array('');
+$title='Удалить';
+$css=array('style1.css');
 ?>
 <?php include('parts/header.php'); ?>
+<?php include('parts/user_name.php'); ?>
 
+<a href="/home.php"><img src="/img/logo.jpg"/></a><br />
+<div id="navig"><a href="/home/adv.php">Моя реклама</a><br />
+<a href="/home/blocks.php">Мои блоки</a></div>
+
+<div class="text">
 <?php
 if(isset($error))
     echo "<p>{$error}</p>";
 ?>
 
-<p>Вы действительно хотите удалить это объявление?</p>
-<p>Номер <?php echo $currentAdv->adv_id ?> </p>
-<p>Имя <?php echo $currentAdv->name ?> </p>
+<p style="color:chocolate">Вы действительно хотите удалить это объявление?</p>
+<p>Номер: <?php echo $currentAdv->adv_id ?> </p>
+<p>Имя: <?php echo $currentAdv->name ?> </p>
 
 <form method="post" action="">
     <input type="submit" name="confirm" value="Да">
     <input type="submit" name="refuse" value="Нет">
     <input type="hidden" name="adv_id" value="<?php echo $currentAdv->adv_id ?>">
 </form>
-
+</div>
 <?php include('parts/footer.php'); ?>

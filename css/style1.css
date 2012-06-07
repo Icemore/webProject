@@ -46,6 +46,10 @@ background-image:url("../img/345.jpg");
 	top: 170px;
 	}
 	
+	li {
+	color: BlanchedAlmond;
+	}
+	
 	a {
 	color: BlanchedAlmond;
 	font-size: 25px;
