@@ -40,6 +40,14 @@ background-image:url("../img/345.jpg");
 	text-align: center;
 	}
 	
+	#add2
+	{
+	position:absolute;
+	top:350px;
+	margin-left:430px;
+	text-align: center;
+	}
+	
 	#navig
 	{
 	position:absolute;

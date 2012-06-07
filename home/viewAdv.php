@@ -60,8 +60,7 @@ $css=array('style1.css');
     <p>Всего переходов: <?php echo $stat['summary']['clicks'] ?></p><br />
 	
 	<?php
-	foreach($adv as $oneAdv){
-        echo "<a href=\"/home/editAdv.php?adv_id={$oneAdv->adv_id}\";>Редактировать</a>";}
+        echo "<a href=\"/home/editAdv.php?adv_id={$currentAdv->adv_id}\";>Редактировать</a>";
     ?>
 	
     <p><a href="/home/adv.php">Назад</a></p>

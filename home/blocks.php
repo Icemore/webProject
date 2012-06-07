@@ -6,14 +6,26 @@ $blocks=Block::getByUser($currentUser->user_id);
 
 ?>
 <?php
-$title='';
-$css=array('');
+$title='Мои блоки';
+$css=array('style1.css');
 ?>
 <?php include('parts/header.php'); ?>
+<?php include('parts/user_name.php'); ?>
 
-<h2>Рекламные блоки</h2>
-    <a href="/home/addBlock.php">Добавить</a>
-    <table border="1">
+<a href="/home.php"><img src="/img/logo.jpg"/></a><br />
+<div id="navig"><a href="/home/adv.php">Моя реклама</a><br />
+<a href="/home/blocks.php">Мои блоки</a></div>
+
+    <a href="/home/addBlock.php">Добавить блок</a>
+    <table width="40%" border="3" cellspacing="5" bordercolor="maroon">
+	<thead style="color:BlanchedAlmond">
+		<caption> Блоки пользователя <?php echo $currentUser->name ?> </caption>
+		<tr width="100">
+			<th>Номер</th>
+			<th>Имя</th>
+			<th>Действия</th>
+		</tr>
+	</thead>
         <?php
             foreach($blocks as $block){
                 echo '<tr>';
@@ -30,5 +42,4 @@ $css=array('');
      ?>
 
     </table>
-
 <?php include('parts/footer.php'); ?>

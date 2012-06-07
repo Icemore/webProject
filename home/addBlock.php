@@ -35,10 +35,17 @@ if($_POST['action']=='addBlock'){
 
 ?>
 <?php
-$title='';
-$css=array('');
+$title='Добавить';
+$css=array('style1.css');
 ?>
 <?php include('parts/header.php'); ?>
+<?php include('parts/user_name.php'); ?>
+
+<a href="/home.php"><img src="/img/logo.jpg"/></a>
+<div id="navig"><a href="/home/adv.php">Моя реклама</a><br />
+<a href="/home/blocks.php">Мои блоки</a></div>
+
+<div id="add"><h1 style="color:maroon">Выберите тип блока:</h1>
 
     <?php
         if(isset($regErrors)){
@@ -63,8 +70,9 @@ $css=array('');
         <input type="submit" value="Выбрать">
         <input name="action" type="hidden" value="select_type">
     </form>
+</div>
 
-
+<div id="add2">
     <?php //Прошу прощения за это, но как сделать по-другому я не знаю
         if(isset($currentType)){
             echo '<form method="post" action="">';
@@ -84,7 +92,7 @@ $css=array('');
             echo '<p>Цвет фона <input type="text" name="bgcolor" value='.($bgcolor ? $bgcolor : "#ffffff").'></p>';
             echo '<p>Цвет текста <input type="text" name="txtcolor" value='.($txtcolor ? $txtcolor : "#000000").'></p>';
 
-            echo '<p>Категории (отделяйте точкой с запятой) <input type="text" name="categories" value="'.$categories.'"></p>';
+            echo '<p>Категории (отделяйте точкой с запятой) <br /> <input type="text" name="categories" value="'.$categories.'"></p>';
 
             echo '<input type="hidden" name="type" value="'.$currentType->id.'">';
             echo '<input type="hidden" name="action" value="addBlock">';
@@ -93,6 +101,6 @@ $css=array('');
             echo '</form>';
         }
     ?>
-
+</div>
 
 <?php include('parts/footer.php'); ?>

@@ -30,15 +30,20 @@ else
 $categories=Category::getForBlock($currentBlock->block_id);
 
 $stat = $currentBlock->getStatistics();
-
+$blocks=Block::getByUser($currentUser->user_id);
 ?>
 <?php
-$title='';
-$css=array('');
+$title='Просмотр';
+$css=array('style1.css');
 ?>
 <?php include('parts/header.php'); ?>
+<?php include('parts/user_name.php'); ?>
 
-<h2>Рекламный блок № <?php echo $currentBlock->block_id ?> </h2>
+<a href="/home.php"><img src="/img/logo.jpg"/></a><br />
+<div id="navig"><a href="/home/adv.php">Моя реклама</a><br />
+<a href="/home/blocks.php">Мои блоки</a></div>
+
+<div class="text"><h2>Рекламный блок № <?php echo $currentBlock->block_id ?> </h2>
 <p>Тип: <?php echo $currentType ?> </p>
 
 <?php
@@ -51,11 +56,12 @@ if($currentSubtype!="")
     <p>Цвет фона: <?php echo $currentBlock->bgcolor ?></p>
     <p>Цвет текста: <?php echo $currentBlock->txtcolor ?> </p>
     <p>Категории: <?php echo $categories ?></p>
-
-    <p><a href="/home/blocks.php">Назад</a></p>
-
     <p>Всего просмотров: <?php echo $stat['summary']['views'] ?></p>
     <p>Всего переходов: <?php echo $stat['summary']['clicks'] ?></p>
 
-
+	<?php
+        echo "<a href=\"/home/editBlock.php?block_id={$currentBlock->block_id}\">Редактировать</a> ";
+     ?>
+	
+ <p><a href="/home/blocks.php">Назад</a></p>
 <?php include('parts/footer.php'); ?>
