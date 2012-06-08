@@ -26,7 +26,7 @@ if($_POST['action']=='addBlock'){
     if(!$regErrors){
         $block_id=mysqli_insert_id($db);
         if(!Category::updateForBlock($block_id, $categories))
-            $regErrors[]='Не удалось добавить категории. Рекламный блок создан.';
+            $regErrors[]='Не удалось добавить категории.<br /> Рекламный блок создан.';
 
         if(!$regErrors)
             header('Location: /home/blocks.php');
@@ -45,11 +45,11 @@ $css=array('style1.css');
 <div id="navig"><a href="/home/adv.php">Моя реклама</a><br />
 <a href="/home/blocks.php">Мои блоки</a></div>
 
-<div id="add"><h1 style="color:maroon">Выберите тип блока:</h1>
-
+<div id="add"><h1 style="color:maroon">Выберите тип блока:</h1></div>
+<div id="osh">
     <?php
         if(isset($regErrors)){
-            echo '<h3>При добавлении блока произошли ошибки:</h3> <ul>';
+            echo '<h3>При добавлении блока произошли ошибки:</h3><ul>';
 
             foreach($regErrors as $error)
                 echo '<li>'.$error.'</li>';
@@ -57,8 +57,9 @@ $css=array('style1.css');
             echo '</ul>';
         }
     ?>
+</div>
 
-
+<div id="add4">
     <form method="post" action="">
         <?php
             foreach($types as $type)

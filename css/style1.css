@@ -27,16 +27,39 @@ background-image:url("../img/345.jpg");
 	#add 
 	{
 	position:absolute;
-	top:100px;
-	margin-left:470px;
+	top:50px;
+	margin-left:500px;
 	text-align: center;
+	}
+	
+	#add3 
+	{
+	position:absolute;
+	top:180px;
+	margin-left:530px;
+	text-align: center;
+	}
+	
+	#add4
+	{
+	position:absolute;
+	top:180px;
+	margin-left:520px;
+	text-align: center;
+	}
+	
+	#osh
+	{
+	position:absolute;
+	top:90px;
+	margin-left:490px;
 	}
 	
 	#add1
 	{
 	position:absolute;
 	top:350px;
-	margin-left:320px;
+	margin-left:470px;
 	text-align: center;
 	}
 	
@@ -44,7 +67,7 @@ background-image:url("../img/345.jpg");
 	{
 	position:absolute;
 	top:350px;
-	margin-left:430px;
+	margin-left:460px;
 	text-align: center;
 	}
 	
