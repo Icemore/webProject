@@ -53,3 +53,9 @@ body {
 	color: yellow;
 	font-size: 25px;
 	}
+
+    #navig
+    {
+        position:absolute;
+        top: 170px;
+    }
