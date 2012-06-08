@@ -3,14 +3,15 @@ include_once('include/auth.php');
 include_once('models/Block.php');
 include_once('include/types.php');
 include_once('models/Category.php');
+global $currentUser, $types, $typesCnt;
 
+// ====== Проверить что блок указан и у нас есть на него права ======
 if(!isset($_GET['block_id'])){
     header('Location: /home/blocks.php');
     die();
 }
 
 $block_id=$_GET['block_id'];
-
 if(!is_numeric($block_id)) die();
 
 $currentBlock=new Block($block_id);
@@ -19,6 +20,7 @@ if(!isset($currentBlock->user_id) || $currentUser->user_id != $currentBlock->use
     header('Location: /home.php');
     die();
 }
+// ===== Все ок, можно работать ======
 
 $currentType=$types[$currentBlock->type]->name;
 if($currentBlock->subtype!="")
@@ -45,11 +47,11 @@ else{
     if(!$errors){
         if(!Category::updateForBlock($currentBlock->block_id, $categories))
             $errors[]='Не удалось обновить категории';
-
-        if(!$errors)
-            $dataSaved=true;
     }
+
+    if(!$errors) $dataSaved=true;
 }
+
 
 ?>
 <?php

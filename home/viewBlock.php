@@ -31,6 +31,8 @@ $categories=Category::getForBlock($currentBlock->block_id);
 
 $stat = $currentBlock->getStatistics();
 $blocks=Block::getByUser($currentUser->user_id);
+
+
 ?>
 <?php
 $title='Просмотр';
@@ -54,7 +56,10 @@ if($currentSubtype!="")
     <p>Имя: <?php echo $currentBlock->name ?> </p>
     <p>Цвет фона: <?php echo $currentBlock->bgcolor ?></p>
     <p>Цвет текста: <?php echo $currentBlock->txtcolor ?> </p>
-    <p>Категории: <?php echo $categories ?></p>
+    <?php
+        if(!$categories) echo "<p>Категории не указаны, реклама показываться не будет!</p>";
+        else echo "<p>Категории: {$categories}</p>";
+    ?>
     <p>Всего просмотров: <?php echo $stat['summary']['views'] ?></p>
     <p>Всего переходов: <?php echo $stat['summary']['clicks'] ?></p>
 

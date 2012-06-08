@@ -42,11 +42,13 @@ else{
     if(!$errors){
         if(!Category::updateForAdv($currentAdv->adv_id, $categories))
             $errors[]='Не удалось обновить категории';
-
-        if(!$errors)
-            $dataSaved=true;
     }
+
+    if(!$errors)
+        $dataSaved=true;
 }
+
+
 
 ?>
 <?php

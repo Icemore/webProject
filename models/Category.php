@@ -65,18 +65,24 @@ class Category
         return $catsId;
     }
 
+    static function updateAndGetIds($str){
+        $cats=Category::parse($str);
+
+        if(!$cats) return "empty";
+        if(!Category::updateCategories($cats)) return false;
+
+        return Category::getCatsId($cats);
+    }
+
     static function updateForBlock($block_id, $str){
         global $db;
 
-        $cats=Category::parse($str);
-
-        if(!$cats || !Category::updateCategories($cats))
-            return false;
-
-        $catsId=Category::getCatsId($cats);
-
         //Удалить все старые
         $db->query("delete from Block_Category where block_id=".$block_id);
+
+        $catsId=Category::updateAndGetIds($str);
+        if(!$catsId) return false;
+        if($catsId=="empty") return true;
 
         //Добавить все новые
         $query='insert into Block_Category (block_id, cat_id) values ';
@@ -114,15 +120,12 @@ class Category
     static function updateForAdv($adv_id, $str){
         global $db;
 
-        $cats=Category::parse($str);
-
-        if(!Category::updateCategories($cats))
-            return false;
-
-        $catsId=Category::getCatsId($cats);
-
         //Удалить все старые
         $db->query("delete from Adv_Category where adv_id=".$adv_id);
+
+        $catsId=Category::updateAndGetIds($str);
+        if(!$catsId) return false;
+        if($catsId=="empty") return true;
 
         //Добавить все новые
         $query='insert into Adv_Category (adv_id, cat_id) values ';

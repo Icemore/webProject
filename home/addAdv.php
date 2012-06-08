@@ -4,6 +4,7 @@ include_once('models/Adv.php');
 include_once('models/Category.php');
 include_once('include/types.php');
 include_once('include/uploadFile.php');
+global $currentUser, $types, $typesCnt;
 
 if(isset($_POST['type'])){
     $typeId=$_POST['type'];
@@ -12,7 +13,6 @@ if(isset($_POST['type'])){
         die();
 
     $currentType=$types[$typeId];
-}
 
 if($_POST['action']=='addAdv'){
     $name=trim($_POST['name']);
@@ -43,18 +43,17 @@ if($_POST['action']=='addAdv'){
             global $uploadPath;
             $adv_id=mysqli_insert_id($db);
 
-            error_log($uploadPath);
-
             move_uploaded_file($_FILES['adv_img']['tmp_name'], $uploadPath.$adv_id.'.'.$imgInfo['extension']);
 
             if(!Category::updateForAdv($adv_id, $categories))
                 $regErrors[]='Не удалось добавить категории. Объявление создано';
 
             if(!$regErrors){
-                header('Location: /home/adv.php');
+                header('Location: /home/viewAdv.php?adv_id='.$adv_id);
             }
         }
     }
+}
 }
 
 ?>

@@ -3,6 +3,7 @@ include_once('include/auth.php');
 include_once('models/Adv.php');
 include_once('include/types.php');
 include_once('models/Category.php');
+global $currentUser, $types, $typesCnt;
 
 if(!isset($_GET['adv_id'])){
     header('Location: /home/adv.php');
@@ -54,7 +55,10 @@ $css=array('style1.css');
     ?>
 
     <p>url: <?php echo $currentAdv->url; ?></p>
-    <p>Категории: <?php echo $categories ?></p>
+    <?php
+        if(!$categories) echo "<p>Категории не указаны, реклама показываться не будет!</p>";
+        else echo "<p>Категории: {$categories}</p>";
+    ?>
     <p>Всего просмотров: <?php echo $stat['summary']['views'] ?></p>
     <p>Всего переходов: <?php echo $stat['summary']['clicks'] ?></p><br />
 	
