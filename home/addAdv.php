@@ -68,8 +68,8 @@ $css=array('style1.css');
 
 <?php include("parts/navigation.php"); ?>
 
-<div id="add"><h1 style="color:maroon">Выберите тип рекламы:</h1>
-
+<div id="add"><h1 style="color:maroon">Выберите тип рекламы:</h1></div>
+<div id="osh">
 <?php
 if(isset($regErrors)){
     echo '<h3>При добавлении объявления произошли ошибки:</h3> <ul>';
@@ -80,8 +80,8 @@ if(isset($regErrors)){
     echo '</ul>';
 }
 ?>
-
-
+</div>
+<div id="add3">
     <form method="post" action="">
         <?php
         foreach($types as $type)
@@ -99,21 +99,20 @@ if(isset($regErrors)){
     <?php //Прошу прощения за это, но как сделать по-другому я не знаю
     if(isset($currentType)){
         echo '<form method="post" enctype="multipart/form-data" action="">';
-		echo '<div class="main">';
-        echo '<div class="field"><label for="name">Имя</label><input type="text" name="name" value="'.$name.'" /></div>';
+        echo '<p>Имя<br /><input type="text" name="name" value="'.$name.'" /></p>';
         if($currentType->hasCaption)
-            echo '<div class="field"><label for="caption">Заголовок</label><input type="text" name="caption" value="'.$caption.'"></div>';
+            echo '<p>Заголовок<br /><input type="text" name="caption" value="'.$caption.'"></p>';
 		if($currentType->hasText)
-            echo '<div class="field"><label for="text">Текст объявления</label><input type="text" name="text" value="'.$text.'"></div>';
+            echo '<p>Текст объявления<br /><input type="text" name="text" value="'.$text.'"></p>';
 
         if($currentType->hasImage){
             echo '<input type="hidden" name="MAX_FILE_SIZE" value="512000">';
-            echo '<div class="field"><label for="adv_img">Изображение</label> <input name="adv_img" type="file"></div>';
+            echo '<p>Изображение<br /><input name="adv_img" type="file"></p>';
         }
 
-        echo '<div class="field"><label for="url">URL</label> <input type="text" name="url" value="'.$url.'"</div>';
+        echo '<p>URL<br /><input type="text" name="url" value="'.$url.'"</p>';
 
-        echo '<div class="field"><label for="categories">Категории (отделяйте точкой с запятой)</label> <input type="text" name="categories" value="'.$categories.'"></div>';
+        echo '<p>Категории (отделяйте точкой с запятой)<br /><input type="text" name="categories" value="'.$categories.'"></p>';
 
         echo '<input type="hidden" name="type" value="'.$currentType->id.'">';
         echo '<input type="hidden" name="action" value="addAdv">';
