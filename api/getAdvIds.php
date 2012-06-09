@@ -26,7 +26,8 @@ if($types[$block->type]->numAdv<0) {
 } else
     $numAdv=$types[$block->type]->numAdv;
 
+if(!isset($_GET['callback'])) die;
+$callback=$_GET['callback'];
+if(!preg_match('/[a-z]+[a-zA-Z0-9]*/', $callback)) die();
 
-$res = array('numAdv' => $numAdv, 'advIds'=> $advIds);
-
-var_dump($res);
+echo $callback."([".implode(", ", $advIds)."], ".$numAdv.");";

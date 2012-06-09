@@ -63,6 +63,12 @@ if($currentSubtype!="")
     <p>Всего просмотров: <?php echo $stat['summary']['views'] ?></p>
     <p>Всего переходов: <?php echo $stat['summary']['clicks'] ?></p>
 
+    <p>Код:</p>
+<textarea rows="2" cols="80">
+<script type="text/javascript">var block_id=<?php echo $currentBlock->block_id ?>;</script>
+<script type="text/javascript" src="http://localhost/api/adv.js"></script>
+</textarea><br>
+
 	<?php
         echo "<a href=\"/home/editBlock.php?block_id={$currentBlock->block_id}\">Редактировать</a> ";
      ?>

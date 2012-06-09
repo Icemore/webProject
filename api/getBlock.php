@@ -18,7 +18,6 @@ $adv_ids=explode(',', $_GET['adv_ids']);
 
 if(!is_numeric($block_id)) die();
 
-
 $block=new Block($block_id);
 $adv=getAdv($adv_ids);
 
@@ -32,6 +31,7 @@ if($types[$block->type]->numAdv<0) {
 if(count($adv)!=$numAdv) die();
 
 
+
 //Путь к рекламному блоку
 $pathToBlock='../blocks/';
 $pathToBlock.=$block->type;
@@ -39,8 +39,16 @@ if($types[$block->type]->subTypes!=null)
     $pathToBlock.='/'.$block->subtype;
 $pathToBlock.='.php';
 
+if(!isset($_GET['callback'])) die;
+$callback=$_GET['callback'];
+if(!preg_match('/[a-z]+[a-zA-Z0-9]*/', $callback)) die();
+
 //Заполнить и показать
-echo eval(file_get_contents($pathToBlock));
+ob_start();
+include $pathToBlock;
+$str = ob_get_clean();
+
+echo $callback."(".json_encode($str).");";
 
 //Функция принимает массив айдишников, возвращает массив Adv. По пути увеличивает число просмотров.
 function getAdv($adv_ids){
